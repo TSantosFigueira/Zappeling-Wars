@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class EventSystemChecker : MonoBehaviour
 {
 	//OnLevelWasLoaded is called after a new scene has finished loading
-	void OnLevelWasLoaded ()
+	void sceneLoaded ()
 	{
 		//If there is no EventSystem (needed for UI interactivity) present
 		if(!FindObjectOfType<EventSystem>())
