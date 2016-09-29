@@ -10,15 +10,6 @@ public class Follow : MonoBehaviour {
     public Vector3 offset;
     Vector3 targetPos;
 
-    // Use this for initialization
-
-    void Start()
-    {
-        //targetPos = transform.position;
-    }
-
-    // Update is called once per frame
-
     void FixedUpdate()
     {
         if (target)
@@ -36,22 +27,6 @@ public class Follow : MonoBehaviour {
             targetPos = GameObject.FindGameObjectWithTag("Player").gameObject.transform.position;
         }
     }
-
 }
-
-
-    //public Transform target;
-    //public float smooth = 5.0f;
-
-    //void Update()
-    //{
-    //    if(!target)
-    //        target = GameObject.FindGameObjectWithTag("Player").gameObject.transform;
-    //    else
-    //    {
-    //        transform.position = Vector3.Lerp (transform.position, target.position, Time.deltaTime * smooth);
-    //    }
-        
-    //}
 
 
