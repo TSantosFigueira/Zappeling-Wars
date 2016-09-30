@@ -118,4 +118,9 @@ public class StartOptions : MonoBehaviour {
 		//Play music clip assigned to mainMusic in PlayMusic script
 		playMusic.PlaySelectedMusic (1);
 	}
+
+    public void PlayCredits(Animator anim)
+    {
+        anim.SetBool("PlayCredits", !anim.GetBool("PlayCredits"));            
+    }
 }
