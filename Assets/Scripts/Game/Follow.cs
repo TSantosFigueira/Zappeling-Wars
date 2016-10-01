@@ -6,7 +6,7 @@ public class Follow : MonoBehaviour {
     public float interpVelocity;
     public float minDistance;
     public float followDistance;
-    public GameObject target;
+    private GameObject target;
     public Vector3 offset;
     Vector3 targetPos;
 
