@@ -11,6 +11,9 @@ public class PlayerSyncRotation : NetworkBehaviour {
     [SerializeField]
     private float lerpRate = 15;
 
+    private Quaternion lastRot;
+    private float threshold = 5;
+
 	void FixedUpdate ()
     {
         TransmitRotations();
@@ -32,9 +35,10 @@ public class PlayerSyncRotation : NetworkBehaviour {
     [ClientCallback]
     void TransmitRotations()
     {
-        if (isLocalPlayer)
+        if (isLocalPlayer && Quaternion.Angle(playerTransform.rotation, lastRot) > threshold)
         {
             CmdProvideRotationsToServer(playerTransform.rotation);
+            lastRot = playerTransform.rotation;
         }
     }
 }
