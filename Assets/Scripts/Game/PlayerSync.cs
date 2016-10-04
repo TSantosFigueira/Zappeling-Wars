@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
+[NetworkSettings (channel = 0, sendInterval = 0.033f)]
 public class PlayerSync : NetworkBehaviour {
 
     [SyncVar]
@@ -43,6 +44,10 @@ public class PlayerSync : NetworkBehaviour {
 	void FixedUpdate ()
     {
         TransmitPosition();
-        LerpPosition();
 	}
+
+    void Update()
+    {
+        LerpPosition();
+    }
 }

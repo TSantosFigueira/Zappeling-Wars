@@ -8,17 +8,16 @@ public class PlayerSyncRotation : NetworkBehaviour {
     private Quaternion SyncPlayerRotation;
     [SerializeField]
     private Transform playerTransform;
-    [SerializeField]
     private float lerpRate = 15;
 
     private Quaternion lastRot;
-    private float threshold = 5;
+    private float threshold = 1;
 
 	void FixedUpdate ()
     {
         TransmitRotations();
         LerpRotation();
-	}
+    }
 
     void LerpRotation()
     {
