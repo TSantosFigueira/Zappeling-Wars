@@ -57,13 +57,14 @@ public class PlayerHealth : NetworkBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             Debug.Log("Dead");
         }
     }
 
     void OnHealthChanged (int health)
     {
-        healthBar.sizeDelta = new Vector2(health * 2, healthBar.sizeDelta.y);
+       healthBar.sizeDelta = new Vector2(health * 2, healthBar.sizeDelta.y);
     }
 
 

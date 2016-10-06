@@ -3,14 +3,14 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
-    int damage;
+    int damage = 25;
 
     void Start()
     {
-        damage = GetComponent<PlayerShoot>().damage;
+        //damage = GetComponentInParent<PlayerShoot>().damage;
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter(Collision collision)
     {
         GameObject hit = collision.gameObject;
         PlayerHealth health = hit.GetComponent<PlayerHealth>();

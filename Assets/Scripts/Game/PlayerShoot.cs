@@ -31,20 +31,20 @@ public class PlayerShoot : NetworkBehaviour {
     void CmdShoot()
     {
         bullet = (GameObject) Instantiate(bulletPrefab, playerTransform.position, playerTransform.rotation);
-        bullet.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0, bulletVelocity));
+        bullet.GetComponent<Rigidbody>().AddForce (Vector3.up * 20000 * Time.deltaTime);
 
         NetworkServer.Spawn(bullet);
 
         Destroy(bullet, 2);
 
-        hit = Physics2D.Raycast(playerTransform.TransformPoint(0, 0.5f, 0), playerTransform.up, range);
-        if(hit.collider != null) {
-            if(hit.transform.tag == "Player")
-            {
-                string Identity = hit.transform.name;
-                CmdTellServer_Who_Was_Shot(Identity, damage);
-            }
-        }
+        //hit = Physics2D.Raycast(playerTransform.TransformPoint(0, 0.5f, 0), playerTransform.up, range);
+        //if(hit.collider != null) {
+        //    if(hit.transform.tag == "Player")
+        //    {
+        //        string Identity = hit.transform.name;
+        //        CmdTellServer_Who_Was_Shot(Identity, damage);
+        //    }
+        //}
     }
 
     [Command]
