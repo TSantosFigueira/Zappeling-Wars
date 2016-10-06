@@ -6,17 +6,16 @@ using System;
 public class PlayerShoot : NetworkBehaviour {
 
     public int damage = 25;
-    public GameObject bullet;
+    public GameObject bulletPrefab;
     private int range = 2500;
-    [SerializeField]
-    private Transform playerTransform;
+    [SerializeField] private Transform playerTransform;
     private RaycastHit2D hit;
-    private GameObject clone;
+    private GameObject bullet;
+    private float bulletVelocity = 1200;
 
 	// Update is called once per frame
 	void Update () {
         CheckIfShooting();
-        Debug.DrawRay(playerTransform.TransformPoint(0, 0.5f, 0), playerTransform.up, Color.blue);
     }
 
     void CheckIfShooting()
@@ -25,13 +24,18 @@ public class PlayerShoot : NetworkBehaviour {
             return;
         else
             if (Input.GetKeyDown(KeyCode.Mouse0))
-                Shoot();
+                CmdShoot();
     }
 
-    void Shoot()
+    [Command]
+    void CmdShoot()
     {
-        clone = Instantiate(bullet, playerTransform.position, playerTransform.rotation) as GameObject;
-        clone.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0, 1000));
+        bullet = (GameObject) Instantiate(bulletPrefab, playerTransform.position, playerTransform.rotation);
+        bullet.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0, bulletVelocity));
+
+        NetworkServer.Spawn(bullet);
+
+        Destroy(bullet, 2);
 
         hit = Physics2D.Raycast(playerTransform.TransformPoint(0, 0.5f, 0), playerTransform.up, range);
         if(hit.collider != null) {

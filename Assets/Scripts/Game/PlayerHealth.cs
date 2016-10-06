@@ -3,37 +3,40 @@ using System.Collections;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class PlayerHealth : NetworkBehaviour {
-
-    [SyncVar (hook = "OnHealthChanged")] private int health = 100;
-    private Text healthText;
+public class PlayerHealth : NetworkBehaviour
+{
+    private int health = 100;
+    public RectTransform healthBar;
     private bool shouldDie = false;
     public bool isDead = false;
 
     public delegate void DieDelegate();
     public event DieDelegate EventDie;
 
-	// Use this for initialization
-	void Start () {
-          healthText = GameObject.Find("Health Text").GetComponent<Text>();
-          SetHealthText();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        CheckCondition();
-	}
+    [SyncVar (hook = "OnHealthChanged")] private int currentHealth;
 
-    void CheckCondition ()
+    // Use this for initialization
+    void Start()
     {
-        if(health <= 0 && !shouldDie && !isDead)
+        currentHealth = health;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        CheckCondition();
+    }
+
+    void CheckCondition()
+    {
+        if (health <= 0 && !shouldDie && !isDead)
         {
             shouldDie = true;
         }
 
-        if(health <= 0 && shouldDie)
+        if (health <= 0 && shouldDie)
         {
-            if(EventDie != null)
+            if (EventDie != null)
             {
                 EventDie();
             }
@@ -42,23 +45,26 @@ public class PlayerHealth : NetworkBehaviour {
         }
     }
 
-
-    void SetHealthText()
-    {
-        if (isLocalPlayer)
-        {
-             healthText.text = "Health " + health.ToString();
-        }
-    }
-
     public void DeductHealth(int damage)
     {
         health -= damage;
     }
 
-    void OnHealthChanged(int lifeAmount)
+    public void TakeDamage(int amount)
     {
-        health = lifeAmount;
-        SetHealthText();
+        if (!isServer) return;
+
+        currentHealth -= amount;
+        if (currentHealth <= 0)
+        {
+            Debug.Log("Dead");
+        }
     }
+
+    void OnHealthChanged (int health)
+    {
+        healthBar.sizeDelta = new Vector2(health * 2, healthBar.sizeDelta.y);
+    }
+
+
 }
