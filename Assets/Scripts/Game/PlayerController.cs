@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Done_Boundary 
@@ -15,8 +16,13 @@ public class PlayerController : MonoBehaviour
 	public Done_Boundary boundary;
 
 	public float fireRate;
-	 
+    private SpriteRenderer sprites;
 	private float nextFire;
+
+    void Start()
+    {
+        sprites = GetComponent<SpriteRenderer>();
+    }
 	
 	void Update ()
 	{
@@ -36,6 +42,11 @@ public class PlayerController : MonoBehaviour
 		Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
         GetComponent<Rigidbody>().velocity = movement * speed;
 
+        if (movement.x <= 0)
+            sprites.flipX = false;
+        else
+            sprites.flipX = true;
+
         GetComponent<Rigidbody>().position = new Vector3
         (
             Mathf.Clamp(GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax),
@@ -51,6 +62,6 @@ public class PlayerController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, boundary.zMin, boundary.zMax);
         transform.position = pos; */
 
-        GetComponent<Rigidbody>().rotation = Quaternion.Euler(0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
+        //GetComponent<Rigidbody>().rotation = Quaternion.Euler(0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
 	}
 }
