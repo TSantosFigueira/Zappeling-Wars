@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : NetworkBehaviour {
 
-    [SyncVar (hook = "OnHealthChanged")]
-    private int health = 100;
+    [SyncVar (hook = "OnHealthChanged")] private int health = 100;
     private Text healthText;
     private bool shouldDie = false;
     public bool isDead = false;
@@ -16,8 +15,8 @@ public class PlayerHealth : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        healthText = GameObject.Find("Health Text").GetComponent<Text>();
-        SetHealthText();
+          healthText = GameObject.Find("Health Text").GetComponent<Text>();
+          SetHealthText();
 	}
 	
 	// Update is called once per frame
@@ -48,7 +47,7 @@ public class PlayerHealth : NetworkBehaviour {
     {
         if (isLocalPlayer)
         {
-            healthText.text = "Health " + health.ToString();
+             healthText.text = "Health " + health.ToString();
         }
     }
 

@@ -14,11 +14,10 @@ public class PlayerDeath : NetworkBehaviour {
         healthScript.EventDie += DisablePlayer;
 	}
 
-
     void DisablePlayer()
     {
-        GetComponent<CharacterController>().enabled = false;
         GetComponent<PlayerShoot>().enabled = false;
+        GetComponentInChildren<Camera>().enabled = false;
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
         for(int i = 0; i < renderers.Length; i++)
         {
@@ -27,9 +26,11 @@ public class PlayerDeath : NetworkBehaviour {
         healthScript.isDead = true;
 
         if (isLocalPlayer)
-        {
-            crossHair.enabled = false;
-        }
+         {
+             GetComponent<CharacterController>().enabled = false;
+             // crossHair.enabled = false;
+             // respawn Player
+         } 
     }
 
     void OnDisable()

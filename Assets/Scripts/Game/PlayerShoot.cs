@@ -7,7 +7,7 @@ public class PlayerShoot : NetworkBehaviour {
 
     public int damage = 25;
     public GameObject bullet;
-    private int range = 200;
+    private int range = 2500;
     [SerializeField]
     private Transform playerTransform;
     private RaycastHit2D hit;
@@ -16,7 +16,8 @@ public class PlayerShoot : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
         CheckIfShooting();
-	}
+        Debug.DrawRay(playerTransform.TransformPoint(0, 0.5f, 0), playerTransform.up, Color.blue);
+    }
 
     void CheckIfShooting()
     {
@@ -32,10 +33,8 @@ public class PlayerShoot : NetworkBehaviour {
         clone = Instantiate(bullet, playerTransform.position, playerTransform.rotation) as GameObject;
         clone.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0, 1000));
 
-        hit = Physics2D.Raycast(playerTransform.TransformPoint(0, 0, 0.5f), playerTransform.forward, range);
+        hit = Physics2D.Raycast(playerTransform.TransformPoint(0, 0.5f, 0), playerTransform.up, range);
         if(hit.collider != null) {
-            Debug.Log(hit.transform.tag);
-
             if(hit.transform.tag == "Player")
             {
                 string Identity = hit.transform.name;
