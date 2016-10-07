@@ -15,10 +15,6 @@ public class SetupLocalPlayer : NetworkBehaviour {
             GetComponent<PlayerController>().enabled = true;
             GameObject.Find("Main Camera").SetActive(false);
             PlayerCamera.enabled = true;
-            //transform.parent = GetComponentInChildren<Camera>().transform;
-            //Debug.Log(gameObject.GetComponentInChildren<Camera>().name);
-            //GameObject.Find("Main Camera 1").SetActive(true);
-
         }
            
 	}

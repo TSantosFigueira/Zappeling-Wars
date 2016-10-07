@@ -14,20 +14,12 @@ public class PlayerController : MonoBehaviour
 	public float tilt;
 	public Done_Boundary boundary;
 
-	public GameObject shot;
-	public Transform shotSpawn;
 	public float fireRate;
 	 
 	private float nextFire;
 	
 	void Update ()
 	{
-		if (Input.GetButton("Fire1") && Time.time > nextFire) 
-		{
-			nextFire = Time.time + fireRate;
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-			GetComponent<AudioSource>().Play ();
-		}
 	}
 
 	void FixedUpdate ()
@@ -36,14 +28,14 @@ public class PlayerController : MonoBehaviour
 		float moveVertical = CrossPlatformInputManager.GetAxis ("Vertical");
 
 		Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
-        GetComponent<Rigidbody>().velocity = movement * speed;
+        GetComponent<Rigidbody2D>().velocity = movement * speed;
 
-        GetComponent<Rigidbody>().position = new Vector3
+        GetComponent<Rigidbody2D>().position = new Vector3
         (
-            Mathf.Clamp(GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax),
-            Mathf.Clamp(GetComponent<Rigidbody>().position.y, boundary.zMin, boundary.zMax),
+            Mathf.Clamp(GetComponent<Rigidbody2D>().position.x, boundary.xMin, boundary.xMax),
+            Mathf.Clamp(GetComponent<Rigidbody2D>().position.y, boundary.zMin, boundary.zMax),
             0.0f);
 
-        GetComponent<Rigidbody>().rotation = Quaternion.Euler (0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
+      //  GetComponent<Rigidbody2D>().rotation = Quaternion.RotateTowards (0.0f, GetComponent<Rigidbody2D>().velocity.x * -tilt);
 	}
 }
