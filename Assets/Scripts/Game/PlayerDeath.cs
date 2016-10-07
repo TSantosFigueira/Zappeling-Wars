@@ -11,7 +11,7 @@ public class PlayerDeath : NetworkBehaviour {
 	// Use this for initialization
 	void Start () {
         healthScript = GetComponent<PlayerHealth>();
-        healthScript.EventDie += DisablePlayer;
+        //healthScript.EventDie += DisablePlayer;
 	}
 
     void DisablePlayer()
@@ -35,6 +35,6 @@ public class PlayerDeath : NetworkBehaviour {
 
     void OnDisable()
     {
-        healthScript.EventDie -= DisablePlayer;
+        //healthScript.EventDie -= DisablePlayer;
     }
 }

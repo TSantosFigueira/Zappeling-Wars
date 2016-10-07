@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 	public float fireRate;
     private SpriteRenderer sprites;
 	private float nextFire;
+    private bool lastFacingSide = true;
 
     void Start()
     {
@@ -26,15 +27,15 @@ public class PlayerController : MonoBehaviour
 	
 	void Update ()
 	{
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        //float x = Input.GetAxisRaw("Horizontal");
+        //float y = Input.GetAxisRaw("Vertical");
         //Normalize the inputs
-        Vector2 direction = new Vector2(x, y).normalized;
+        //Vector2 direction = new Vector2(x, y).normalized;
         //Move the player
-        Move(direction);
+        Move();
     }
 
-	void Move (Vector2 direction)
+	void Move ()
 	{
         float moveHorizontal = CrossPlatformInputManager.GetAxis ("Horizontal");
 		float moveVertical = CrossPlatformInputManager.GetAxis ("Vertical");
@@ -42,9 +43,9 @@ public class PlayerController : MonoBehaviour
 		Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
         GetComponent<Rigidbody>().velocity = movement * speed;
 
-        if (movement.x <= 0)
+        if (movement.x < 0.0f)
             sprites.flipX = false;
-        else
+        else if(movement.x > 0.0f)
             sprites.flipX = true;
 
         GetComponent<Rigidbody>().position = new Vector3

@@ -1,20 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 using System;
 
 public class PlayerShoot : NetworkBehaviour {
 
     public int damage = 25;
     public GameObject bulletPrefab;
+    public Transform leftSpawnPoint;
+    public Transform rightSpawnPoint;
+
+    private SpriteRenderer sprite;
     private int range = 2500;
-    [SerializeField] private Transform playerTransform;
     private RaycastHit2D hit;
     private GameObject bullet;
     private float bulletVelocity = 1200;
 
 	// Update is called once per frame
 	void Update () {
+        sprite = GetComponent<SpriteRenderer>();
         CheckIfShooting();
     }
 
@@ -30,11 +35,17 @@ public class PlayerShoot : NetworkBehaviour {
     [Command]
     void CmdShoot()
     {
-        bullet = (GameObject) Instantiate(bulletPrefab, playerTransform.position, playerTransform.rotation);
-        bullet.GetComponent<Rigidbody>().AddForce (Vector3.up * 20000 * Time.deltaTime);
-
+        if (sprite.flipX)
+        {
+            bullet = (GameObject)Instantiate(bulletPrefab, rightSpawnPoint.position, Quaternion.identity);
+            bullet.GetComponent<Rigidbody>().AddForce(Vector3.right * 20000 * Time.deltaTime);
+        }         
+        else{
+            bullet = (GameObject)Instantiate(bulletPrefab, leftSpawnPoint.position, Quaternion.identity);
+            bullet.GetComponent<Rigidbody>().AddForce(Vector3.left * 20000 * Time.deltaTime);
+        }
+            
         NetworkServer.Spawn(bullet);
-
         Destroy(bullet, 2);
 
         //hit = Physics2D.Raycast(playerTransform.TransformPoint(0, 0.5f, 0), playerTransform.up, range);

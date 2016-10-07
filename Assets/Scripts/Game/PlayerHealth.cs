@@ -57,8 +57,8 @@ public class PlayerHealth : NetworkBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
-            currentHealth = 0;
-            Debug.Log("Dead");
+            currentHealth = health;
+            RpcRespawn();
         }
     }
 
@@ -67,5 +67,12 @@ public class PlayerHealth : NetworkBehaviour
        healthBar.sizeDelta = new Vector2(health * 2, healthBar.sizeDelta.y);
     }
 
-
+    [ClientRpc]
+    void RpcRespawn()
+    {
+        if (isLocalPlayer)
+        {
+            transform.position = Vector3.zero;
+        }
+    }
 }
