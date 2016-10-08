@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class Bullet : MonoBehaviour
+public class Bullet : NetworkBehaviour
 {
     int damage = 25;
 
-    void Start()
+    public void OnTriggerEnter(Collider other)
     {
-        //damage = GetComponentInParent<PlayerShoot>().damage;
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        GameObject hit = collision.gameObject;
+        GameObject hit = other.gameObject;
         PlayerHealth health = hit.GetComponent<PlayerHealth>();
-        if(health != null)
+
+        if (health != null)
         {
             health.TakeDamage(damage);
         }
+
         Destroy(gameObject);
     }
 }
