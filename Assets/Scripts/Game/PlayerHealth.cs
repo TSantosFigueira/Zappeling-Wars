@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : NetworkBehaviour
 {
-    private int health = 100;
+    public int health = 100;
     public RectTransform healthBar;
     private bool shouldDie = false;
     public bool isDead = false;
