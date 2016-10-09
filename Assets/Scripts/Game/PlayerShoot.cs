@@ -38,6 +38,7 @@ public class PlayerShoot : NetworkBehaviour
     [Command]
     void CmdShoot()
     {
+        GetComponent<Animator>().SetBool("isFiring", true);
         if (GetComponent<SpriteRenderer>().flipX)
         {
             bullet = (GameObject)Instantiate(bulletPrefab, rightSpawnPoint.position, Quaternion.identity);
@@ -46,10 +47,17 @@ public class PlayerShoot : NetworkBehaviour
         else
         {
             bullet = (GameObject)Instantiate(bulletPrefab, leftSpawnPoint.position, Quaternion.identity);
+            bullet.GetComponent<SpriteRenderer>().flipX = true;
             bullet.GetComponent<Rigidbody>().velocity = Vector2.left * 6;
         }
-
         NetworkServer.Spawn(bullet);
         Destroy(bullet, 2);
+        StartCoroutine("WaitForEndAnimation");
+    }
+
+    IEnumerator WaitForEndAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<Animator>().SetBool("isFiring", false);
     }
 }
