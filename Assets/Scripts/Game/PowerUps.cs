@@ -11,7 +11,7 @@ public class PowerUps : MonoBehaviour {
 
     private int index;
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter(Collider other){
         if (other.CompareTag("PowerUp")){
             BeginPowerUp();
         }
@@ -22,6 +22,7 @@ public class PowerUps : MonoBehaviour {
         //Seleciona um efeito aleatorio
         index = Random.Range(0, powerUpTypes.Length);
         //Inicia o efeito de Power Up.
+        Debug.Log("Inicio o power up: " + powerUpTypes[index]);
         if(powerUpTypes[index] == "Barreira"){
             GetComponent<PlayerHealth>().StartShield();
         }
