@@ -44,7 +44,7 @@ public class PowerUps : MonoBehaviour {
             GetComponent<PlayerHealth>().FinishShield();
         }else if (powerUpTypes[index] == "BulletPower"){
             var shoot = GetComponent<PlayerShoot>();
-            shoot.bulletPrefab.GetComponent<Bullet>().DamageNormalize();
+            shoot.bulletPrefab.GetComponent<Bullet>().ReturnDamage();
         }
         else if (powerUpTypes[index] == "SpeedPower"){
             GetComponent<PlayerController>().SpeedNormalize();
