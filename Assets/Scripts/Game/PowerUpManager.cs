@@ -25,12 +25,6 @@ public class PowerUpManager : NetworkBehaviour {
 
     }
 
-
-    // Update is called once per frame
-    void Update () {
-	
-	}
-
     private void InicializeGrid() {
         //Limpa o grid e depois coloca as posições
         gridList.Clear();
@@ -63,7 +57,6 @@ public class PowerUpManager : NetworkBehaviour {
         //Função chamada para spawnar o power up
         SpawnPowerUp(powerUp, RandomPosition());
     }
-
 
     private void SpawnPowerUp(GameObject powerUp, Vector3 position) {
         //Instancia o powerup no mapa.

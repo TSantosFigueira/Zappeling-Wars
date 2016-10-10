@@ -12,6 +12,7 @@ public class Done_Boundary
 public class PlayerController : MonoBehaviour
 {
 	public float speed;
+    private float speedOriginal; //Armazena a velocidade original
 	public float tilt;
 	public Done_Boundary boundary;
 
@@ -19,9 +20,13 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sprites;
 	private float nextFire;
 
+    public TrailRenderer trainRender;
+
     void Start()
     {
         sprites = GetComponent<SpriteRenderer>();
+        speedOriginal = speed;
+        trainRender.enabled = false;
     }
 	
 	void Update ()
@@ -34,6 +39,19 @@ public class PlayerController : MonoBehaviour
         Move(direction);
     }
 
+    public void SpeedBuff(float buff) {
+        //Adiciona o buff de velocidade
+        speed += buff;
+        trainRender.enabled = true;
+        
+    }
+
+    public void SpeedNormalize() {
+        //Retorna a velocidade padrão
+        speed = speedOriginal;
+        trainRender.enabled = false;
+    }
+    
 	void Move (Vector2 direction)
 	{
         float moveHorizontal = CrossPlatformInputManager.GetAxis ("Horizontal");
@@ -41,6 +59,8 @@ public class PlayerController : MonoBehaviour
 
 		Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
         GetComponent<Rigidbody>().velocity = movement * speed;
+
+        
 
         if (movement.x <= 0)
             sprites.flipX = false;
