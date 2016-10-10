@@ -17,6 +17,7 @@ public class Bullet : NetworkBehaviour
     }
 
     public void DamageNormalize(){
+        //Retorna o dano ao valor original
         damage = damageOriginal;
     }
 
