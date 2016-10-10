@@ -12,7 +12,6 @@ public class Done_Boundary
 public class PlayerController : MonoBehaviour
 {
 	public float speed;
-    private float speedOriginal;
 	public float tilt;
 	public Done_Boundary boundary;
 
@@ -21,12 +20,9 @@ public class PlayerController : MonoBehaviour
 	private float nextFire;
     private bool lastFacingSide = true;
 
-    public TrailRenderer trainRenderer;
-
     void Start()
     {
         sprites = GetComponent<SpriteRenderer>();
-        trainRenderer.enabled = false;
     }
 	
 	void Update ()
@@ -69,17 +65,4 @@ public class PlayerController : MonoBehaviour
 
         //GetComponent<Rigidbody>().rotation = Quaternion.Euler(0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
 	}
-
-    public void SpeedBuff(float buff){
-        //Adiociona o buff na velocidade
-        speed += buff;
-        trainRenderer.enabled = true;
-    }
-
-    public void SpeedNormalize() {
-        //Retorna a velocidade a normal
-        speed = speedOriginal;
-        trainRenderer.enabled = false;
-    }
-
 }

@@ -10,9 +10,6 @@ public class PlayerHealth : NetworkBehaviour
     private bool shouldDie = false;
     public bool isDead = false;
 
-    private bool isShield = false;
-    private int shieldCount = 0;
-
     public delegate void DieDelegate();
     public event DieDelegate EventDie;
 
@@ -28,15 +25,6 @@ public class PlayerHealth : NetworkBehaviour
     void Update()
     {
         CheckCondition();
-    }
-
-    public void StartShield(){
-        shieldCount = 3;
-        isShield = true;
-    }
-
-    public void FinishShield() {
-        isShield = false;
     }
 
     void CheckCondition()
@@ -65,11 +53,6 @@ public class PlayerHealth : NetworkBehaviour
     public void TakeDamage(int amount)
     {
         if (!isServer) return;
-
-        if (isShield){
-            shieldCount -= 1;
-            return;
-        }
 
         currentHealth -= amount;
         if (currentHealth <= 0)
