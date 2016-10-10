@@ -7,7 +7,7 @@ public class MainMenuController : MonoBehaviour {
     //Carrega a primeira fase
 	public void playGame()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("03 Game");
     }
 
     public void goToMainMenu()
