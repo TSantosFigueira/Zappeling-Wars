@@ -5,20 +5,6 @@ using UnityEngine.Networking;
 public class Bullet : NetworkBehaviour
 {
     int damage = 25;
-    private int damageOriginal;
-
-    private void Start(){
-        damageOriginal = damage;
-    }
-
-    public void DamageBuff(int buff){
-        //Adiciona o buff ao dano
-        damage += buff;
-    }
-
-    public void DamageNormalize(){
-        damage = damageOriginal;
-    }
 
     public void OnTriggerEnter(Collider other)
     {
