@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 35ff304f6f75dd0429bdb0e8d2baf411
-timeCreated: 1476133220
+guid: 6e4abc942e608a1409d6aca011785b2c
+timeCreated: 1476157864
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: updatedsheet_0
-    21300002: updatedsheet_1
-    21300004: updatedsheet_2
-    21300006: updatedsheet_3
-    21300008: updatedsheet_4
-    21300010: updatedsheet_5
-    21300012: updatedsheet_6
-    21300014: updatedsheet_7
-    21300016: updatedsheet_8
-    21300018: updatedsheet_9
+    21300000: updatedsheet-virado_0
+    21300002: updatedsheet-virado_1
+    21300004: updatedsheet-virado_2
+    21300006: updatedsheet-virado_3
+    21300008: updatedsheet-virado_4
+    21300010: updatedsheet-virado_5
+    21300012: updatedsheet-virado_6
+    21300014: updatedsheet-virado_7
+    21300016: updatedsheet-virado_8
+    21300018: updatedsheet-virado_9
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -63,10 +63,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: updatedsheet_0
+      name: updatedsheet-virado_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 697
         width: 235
         height: 179
@@ -76,10 +76,10 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: updatedsheet_1
+      name: updatedsheet-virado_1
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 514
         width: 235
         height: 178
@@ -89,10 +89,10 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: updatedsheet_2
+      name: updatedsheet-virado_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 323
         width: 235
         height: 178
@@ -102,7 +102,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: updatedsheet_3
+      name: updatedsheet-virado_3
       rect:
         serializedVersion: 2
         x: 112
@@ -115,7 +115,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: updatedsheet_4
+      name: updatedsheet-virado_4
       rect:
         serializedVersion: 2
         x: 182
@@ -128,7 +128,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: updatedsheet_5
+      name: updatedsheet-virado_5
       rect:
         serializedVersion: 2
         x: 280
@@ -141,7 +141,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: updatedsheet_6
+      name: updatedsheet-virado_6
       rect:
         serializedVersion: 2
         x: 51
@@ -154,7 +154,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: updatedsheet_7
+      name: updatedsheet-virado_7
       rect:
         serializedVersion: 2
         x: 112
@@ -167,7 +167,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: updatedsheet_8
+      name: updatedsheet-virado_8
       rect:
         serializedVersion: 2
         x: 200
@@ -180,7 +180,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: updatedsheet_9
+      name: updatedsheet-virado_9
       rect:
         serializedVersion: 2
         x: 313
