@@ -12,47 +12,34 @@ public class Done_Boundary
 public class PlayerController : MonoBehaviour
 {
 	public float speed;
-    private float speedOriginal; //Armazena a velocidade original
+    private float speedOriginal;
 	public float tilt;
 	public Done_Boundary boundary;
 
 	public float fireRate;
     private SpriteRenderer sprites;
 	private float nextFire;
+    private bool lastFacingSide = true;
 
-    public TrailRenderer trainRender;
+    public TrailRenderer trainRenderer;
 
     void Start()
     {
         sprites = GetComponent<SpriteRenderer>();
-        speedOriginal = speed;
-        trainRender.enabled = false;
+        trainRenderer.enabled = false;
     }
 	
 	void Update ()
 	{
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        //float x = Input.GetAxisRaw("Horizontal");
+        //float y = Input.GetAxisRaw("Vertical");
         //Normalize the inputs
-        Vector2 direction = new Vector2(x, y).normalized;
+        //Vector2 direction = new Vector2(x, y).normalized;
         //Move the player
-        Move(direction);
+        Move();
     }
 
-    public void SpeedBuff(float buff) {
-        //Adiciona o buff de velocidade
-        speed += buff;
-        trainRender.enabled = true;
-        
-    }
-
-    public void SpeedNormalize() {
-        //Retorna a velocidade padrão
-        speed = speedOriginal;
-        trainRender.enabled = false;
-    }
-    
-	void Move (Vector2 direction)
+	void Move ()
 	{
         float moveHorizontal = CrossPlatformInputManager.GetAxis ("Horizontal");
 		float moveVertical = CrossPlatformInputManager.GetAxis ("Vertical");
@@ -60,11 +47,9 @@ public class PlayerController : MonoBehaviour
 		Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
         GetComponent<Rigidbody>().velocity = movement * speed;
 
-        
-
-        if (movement.x <= 0)
+        if (movement.x < 0.0f)
             sprites.flipX = false;
-        else
+        else if(movement.x > 0.0f)
             sprites.flipX = true;
 
         GetComponent<Rigidbody>().position = new Vector3
@@ -84,4 +69,17 @@ public class PlayerController : MonoBehaviour
 
         //GetComponent<Rigidbody>().rotation = Quaternion.Euler(0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
 	}
+
+    public void SpeedBuff(float buff){
+        //Adiociona o buff na velocidade
+        speed += buff;
+        trainRenderer.enabled = true;
+    }
+
+    public void SpeedNormalize() {
+        //Retorna a velocidade a normal
+        speed = speedOriginal;
+        trainRenderer.enabled = false;
+    }
+
 }

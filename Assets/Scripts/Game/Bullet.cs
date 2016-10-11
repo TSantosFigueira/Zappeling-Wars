@@ -1,36 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class Bullet : MonoBehaviour
+public class Bullet : NetworkBehaviour
 {
     int damage = 25;
     private int damageOriginal;
 
-
-    void Start()
-    {
-        //damage = GetComponentInParent<PlayerShoot>().damage;
+    private void Start(){
         damageOriginal = damage;
     }
 
     public void DamageBuff(int buff){
         //Adiciona o buff ao dano
-        damage = buff;
+        damage += buff;
     }
 
-    public void ReturnDamage(){
-        //Retorna o dano original.
+    public void DamageNormalize(){
+        //Retorna o dano ao valor original
         damage = damageOriginal;
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        GameObject hit = collision.gameObject;
+        GameObject hit = other.gameObject;
         PlayerHealth health = hit.GetComponent<PlayerHealth>();
-        if(health != null)
+
+        if (health != null)
         {
             health.TakeDamage(damage);
         }
+
         Destroy(gameObject);
     }
 }
