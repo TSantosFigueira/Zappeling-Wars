@@ -45,13 +45,7 @@ public class PlayerSync : NetworkBehaviour {
             lastPos = myTransform.position;
         }
     }
-    
-	// Update is called once per frame
-	void FixedUpdate ()
-    {
-       // TransmitPosition();
-	}
-
+  
     void Update()
     {
         TransmitPosition();

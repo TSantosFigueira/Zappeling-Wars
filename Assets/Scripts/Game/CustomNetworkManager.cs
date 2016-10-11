@@ -22,16 +22,17 @@ public class CustomNetworkManager : NetworkManager
     public void JoinGame()
     {
         SetIPAddress();
+        SetPort();
         NetworkManager.singleton.StartClient();
     }
 
     private void SetIPAddress()
     {
-        string IpAddress = GameObject.Find("IpAddressText").transform.FindChild("Text").GetComponent<Text>().text;
-        NetworkManager.singleton.networkAddress = IpAddress;
+        //string IpAddress = GameObject.Find("IpAddressText").transform.FindChild("Text").GetComponent<Text>().text;
+        NetworkManager.singleton.networkAddress = "localhost";
     }
 
-    public void OnLevelLoaded (int level)
+    public void levelLoaded (int level)
     {
         if (level == 1)
             SetupMenuSceneButtons();
@@ -41,16 +42,16 @@ public class CustomNetworkManager : NetworkManager
 
     private void SetupOtherSceneButtons()
     {
-        GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.RemoveAllListeners();
-        GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
+    //    GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.RemoveAllListeners();
+    //    GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
     }
 
     private void SetupMenuSceneButtons()
     {
-        GameObject.Find("StartHostButton").GetComponent<Button>().onClick.RemoveAllListeners();
-        GameObject.Find("StartHostButton").GetComponent<Button>().onClick.AddListener(StartUpHost);
+        GameObject.Find("Lan Button").GetComponent<Button>().onClick.RemoveAllListeners();
+        GameObject.Find("Lan Button").GetComponent<Button>().onClick.AddListener(StartUpHost);
 
-        GameObject.Find("JoinGameButton").GetComponent<Button>().onClick.RemoveAllListeners();
-        GameObject.Find("JoinGameButton").GetComponent<Button>().onClick.AddListener(JoinGame);
+        GameObject.Find("Lan Client").GetComponent<Button>().onClick.RemoveAllListeners();
+        GameObject.Find("Lan Client").GetComponent<Button>().onClick.AddListener(JoinGame);
     }
 }

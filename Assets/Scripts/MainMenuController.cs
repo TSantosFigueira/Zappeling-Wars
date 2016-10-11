@@ -4,14 +4,17 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour {
 
+    public string jogoParaCarregar;
+    public string menuPrincipal;
     //Carrega a primeira fase
+
 	public void playGame()
     {
-        SceneManager.LoadScene("03 Game");
+        SceneManager.LoadScene(jogoParaCarregar);
     }
 
     public void goToMainMenu()
     {
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene(menuPrincipal);
     }
 }
