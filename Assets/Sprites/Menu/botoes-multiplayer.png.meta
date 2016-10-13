@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: e0dcd8389e3e91e439863920b30bc9fa
-timeCreated: 1476157591
+guid: 825ceca29e177884780cda24e532b593
+timeCreated: 1476358110
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: botoes-multiplayer 1_0
-    21300002: botoes-multiplayer 1_1
-    21300004: botoes-multiplayer 1_2
-    21300006: botoes-multiplayer 1_3
+    21300000: botoes-multiplayer_0
+    21300002: botoes-multiplayer_1
+    21300004: botoes-multiplayer_2
+    21300006: botoes-multiplayer_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -33,7 +33,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 1
+    filterMode: -1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -57,7 +57,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: botoes-multiplayer 1_0
+      name: botoes-multiplayer_0
       rect:
         serializedVersion: 2
         x: 0
@@ -70,7 +70,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: botoes-multiplayer 1_1
+      name: botoes-multiplayer_1
       rect:
         serializedVersion: 2
         x: 274
@@ -83,7 +83,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: botoes-multiplayer 1_2
+      name: botoes-multiplayer_2
       rect:
         serializedVersion: 2
         x: 548
@@ -96,7 +96,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: botoes-multiplayer 1_3
+      name: botoes-multiplayer_3
       rect:
         serializedVersion: 2
         x: 822
@@ -109,7 +109,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     outline: []
-  spritePackingTag: LobbyButtons
+  spritePackingTag: 
   userData: 
   assetBundleName: 
   assetBundleVariant: 

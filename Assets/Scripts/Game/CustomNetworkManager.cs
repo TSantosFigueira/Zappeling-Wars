@@ -14,7 +14,7 @@ public class CustomNetworkManager : NetworkManager
         NetworkManager.singleton.StartHost();
     }
 
-    private void SetPort()
+    void SetPort()
     {
         NetworkManager.singleton.networkPort = 7777;
     }
@@ -26,27 +26,28 @@ public class CustomNetworkManager : NetworkManager
         NetworkManager.singleton.StartClient();
     }
 
-    private void SetIPAddress()
+    void SetIPAddress()
     {
-        //string IpAddress = GameObject.Find("IpAddressText").transform.FindChild("Text").GetComponent<Text>().text;
-        NetworkManager.singleton.networkAddress = "localhost";
+        string IpAddress = GameObject.Find("IpAddressText").transform.FindChild("Text").GetComponent<Text>().text;
+        NetworkManager.singleton.networkAddress = IpAddress;
     }
 
-    public void levelLoaded (int level)
+    void OnLevelWasLoaded (int level)
     {
         if (level == 1)
             SetupMenuSceneButtons();
         else
-            SetupOtherSceneButtons();
+            if(level == 2)
+                SetupOtherSceneButtons();
     }
 
-    private void SetupOtherSceneButtons()
+    void SetupOtherSceneButtons()
     {
-    //    GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.RemoveAllListeners();
-    //    GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
+         GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.RemoveAllListeners();
+         GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
     }
 
-    private void SetupMenuSceneButtons()
+    void SetupMenuSceneButtons()
     {
         GameObject.Find("Lan Button").GetComponent<Button>().onClick.RemoveAllListeners();
         GameObject.Find("Lan Button").GetComponent<Button>().onClick.AddListener(StartUpHost);

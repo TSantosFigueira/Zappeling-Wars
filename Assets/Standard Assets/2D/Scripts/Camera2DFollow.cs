@@ -19,7 +19,6 @@ namespace UnityStandardAssets._2D
         // Use this for initialization
         private void Start()
         {
-            Debug.Log(GameObject.FindGameObjectsWithTag("Player").Length);
             if(GameObject.FindGameObjectsWithTag("Player").Length > 0)
                 target = GameObject.FindGameObjectsWithTag("Player")[GameObject.FindGameObjectsWithTag("Player").Length - 1].gameObject.transform;
             else
