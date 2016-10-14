@@ -34,10 +34,10 @@ public class CustomNetworkManager : NetworkManager
 
     void OnLevelWasLoaded (int level)
     {
-        if (level == 1)
+        if (level == 2)
             SetupMenuSceneButtons();
         else
-            if(level == 2)
+            if(level == 3)
                 SetupOtherSceneButtons();
     }
 

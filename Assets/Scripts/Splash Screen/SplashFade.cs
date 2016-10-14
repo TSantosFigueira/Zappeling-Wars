@@ -10,12 +10,12 @@ public class SplashFade : MonoBehaviour
 
     IEnumerator Start()
     {
-        splashImage.canvasRenderer.SetAlpha(0.0f);
+        splashImage.canvasRenderer.SetAlpha(0.5f);
 
         FadeIn();
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         FadeOut();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f); // tempo para carregar nova fase
         SceneManager.LoadScene(loadLevel);
     }
 
@@ -26,6 +26,6 @@ public class SplashFade : MonoBehaviour
 
     void FadeOut()
     {
-        splashImage.CrossFadeAlpha(0.0f, 2.5f, false);
+        splashImage.CrossFadeAlpha(0.0f, 2f, false);
     }
 }
