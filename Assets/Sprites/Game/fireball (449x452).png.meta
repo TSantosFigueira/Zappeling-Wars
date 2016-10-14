@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: f308002069158894f9bb601725e6da3e
-timeCreated: 1476214730
+timeCreated: 1476413071
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: fireball (449x452)_0
+    21300002: fireball (449x452)_1
+    21300004: fireball (449x452)_2
+    21300006: fireball (449x452)_3
+    21300008: fireball (449x452)_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +43,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +56,72 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: fireball (449x452)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 13
+        width: 450
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452)_1
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 12
+        width: 450
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452)_2
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 13
+        width: 435
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452)_3
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 0
+        width: 427
+        height: 452
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452)_4
+      rect:
+        serializedVersion: 2
+        x: 1808
+        y: 8
+        width: 424
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
