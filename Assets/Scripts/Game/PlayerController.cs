@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         sprites = GetComponent<SpriteRenderer>();
         trainRenderer.enabled = false;
+        speedOriginal = speed;
     }
 	
 	void Update ()

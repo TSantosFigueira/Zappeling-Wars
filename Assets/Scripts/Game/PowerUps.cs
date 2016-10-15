@@ -9,11 +9,18 @@ public class PowerUps : MonoBehaviour {
 
     public string[] powerUpTypes;
 
+    [SerializeField]
+    private bool isActive;
+
     private int index;
 
+    public int damageBuff;
+    public bool weaponBuff;
+
     private void OnTriggerEnter(Collider other){
-        if (other.CompareTag("PowerUp")){
+        if (other.CompareTag("PowerUp") && !isActive){
             BeginPowerUp();
+            Destroy(other.gameObject);
         }
     }
 
@@ -23,16 +30,17 @@ public class PowerUps : MonoBehaviour {
         index = Random.Range(0, powerUpTypes.Length);
         //Inicia o efeito de Power Up.
         Debug.Log("Inicio o power up: " + powerUpTypes[index]);
-        if(powerUpTypes[index] == "Barreira"){
+        if(powerUpTypes[index] == "Shield")
+        {
             GetComponent<PlayerHealth>().StartShield();
         }
         else if(powerUpTypes[index] == "BulletPower"){
-            var shoot = GetComponent<PlayerShoot>();
-            shoot.bulletPrefab.GetComponent<Bullet>().DamageBuff(5);
+            weaponBuff = true;
             
         }else if(powerUpTypes[index] == "SpeedPower"){
             GetComponent<PlayerController>().SpeedBuff(10);
         }
+        isActive = true;
         Invoke("FinishPowerUp", effectTime); //Cancela o efeito depois do tempo limite.
         
     }
@@ -43,12 +51,12 @@ public class PowerUps : MonoBehaviour {
         {
             GetComponent<PlayerHealth>().FinishShield();
         }else if (powerUpTypes[index] == "BulletPower"){
-            var shoot = GetComponent<PlayerShoot>();
-            shoot.bulletPrefab.GetComponent<Bullet>().DamageNormalize();
+            weaponBuff = false;
         }
         else if (powerUpTypes[index] == "SpeedPower"){
             GetComponent<PlayerController>().SpeedNormalize();
         }
+        isActive = false;
     }
 
 }

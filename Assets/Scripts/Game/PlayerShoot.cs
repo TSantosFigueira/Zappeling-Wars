@@ -44,12 +44,20 @@ public class PlayerShoot : NetworkBehaviour
         if (GetComponent<SpriteRenderer>().flipX)
         {
             bullet = (GameObject)Instantiate(bulletPrefab, rightSpawnPoint.position, Quaternion.identity);
+            if (GetComponent<PowerUps>().weaponBuff){
+                int buffDamage = GetComponent<PowerUps>().damageBuff;
+                bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
+            }
             bullet.GetComponent<Rigidbody>().velocity = Vector2.right * 20;
             fireRate = 1;
         }
         else
         {
             bullet = (GameObject)Instantiate(bulletPrefab, leftSpawnPoint.position, Quaternion.identity);
+            if (GetComponent<PowerUps>().weaponBuff){
+                int buffDamage = GetComponent<PowerUps>().damageBuff;
+                bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
+            }
             bullet.GetComponent<SpriteRenderer>().flipX = true;
             bullet.GetComponent<Rigidbody>().velocity = Vector2.left * 20;
             fireRate = 1;

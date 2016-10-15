@@ -14,14 +14,19 @@ public class PowerUpManager : NetworkBehaviour {
     //Lista de posições(grid)
     private List<Vector3> gridList = new List<Vector3>();
 
-    public GameObject powerUp;
+    public GameObject powerUpRef;
+
+    private GameObject powerUpInstance;
+
+    [Header("Tempo para spawnar outro PowerUp")]
+    public float powerupSpawnTime = 9;
 
     public override void OnStartServer(){
         Debug.Log("Serve iniciado");
         InicializeGrid();
         Debug.Log("Lista Pos: " + gridList.Count);
 
-        InvokeRepeating("SpawnRandomPower", 10, 8);
+        InvokeRepeating("Cmd_SpawnRandomPower", 10, powerupSpawnTime);
 
     }
 
@@ -53,15 +58,26 @@ public class PowerUpManager : NetworkBehaviour {
         }
     }
 
-    private void SpawnRandomPower() {
+    [Command]
+    private void Cmd_SpawnRandomPower() {
         //Função chamada para spawnar o power up
-        SpawnPowerUp(powerUp, RandomPosition());
+        Cmd_SpawnPowerUp(powerUpRef, RandomPosition());
     }
 
-    private void SpawnPowerUp(GameObject powerUp, Vector3 position) {
+    [Command]
+    private void Cmd_CleanPowerUp(){
+        Destroy(powerUpInstance);
+    }
+
+    [Command]
+    private void Cmd_SpawnPowerUp(GameObject powerUp, Vector3 position) {
+        if(powerUpInstance){
+            Destroy(powerUpInstance);
+        }
         //Instancia o powerup no mapa.
-        GameObject powerUpInstance = (GameObject)Instantiate(powerUp, position, Quaternion.identity);
-        NetworkServer.Spawn(powerUpInstance); 
+        powerUpInstance = (GameObject)Instantiate(powerUp, position, Quaternion.identity);
+        NetworkServer.Spawn(powerUpInstance);
+        Invoke("Cmd_CleanPowerUp", powerupSpawnTime - 2f);
     }
 
 }
