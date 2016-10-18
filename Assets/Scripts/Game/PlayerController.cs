@@ -12,6 +12,7 @@ public class Done_Boundary
 public class PlayerController : MonoBehaviour
 {
 	public float speed;
+    private float originalSpeed;
 	public float tilt;
 	public Done_Boundary boundary;
 
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         sprites = GetComponent<SpriteRenderer>();
+        originalSpeed = speed;
     }
 	
 	void Update ()
@@ -48,4 +50,13 @@ public class PlayerController : MonoBehaviour
             Mathf.Clamp(GetComponent<Rigidbody>().position.y, boundary.zMin, boundary.zMax),
             0.0f); 
 	}
+
+    public void SpeedBuff(float buff){
+        speed += buff;
+    }
+
+    public void SpeedNormalize() {
+        speed = originalSpeed;
+    }
+
 }

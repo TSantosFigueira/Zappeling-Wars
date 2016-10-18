@@ -16,10 +16,6 @@ public class Bullet : NetworkBehaviour
         damage += buff;
     }
 
-    public void DamageNormalize(){
-        damage = damageOriginal;
-    }
-
     public void OnTriggerEnter(Collider other)
     {
         GameObject hit = other.gameObject;

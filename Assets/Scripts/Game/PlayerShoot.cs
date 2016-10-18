@@ -9,6 +9,7 @@ public class PlayerShoot : NetworkBehaviour
 
     public int damage = 25;
     public GameObject bulletPrefab;
+    public GameObject specialBulletPrefab;
     public Transform leftSpawnPoint;
     public Transform rightSpawnPoint;
 
@@ -18,11 +19,12 @@ public class PlayerShoot : NetworkBehaviour
     private GameObject bullet;
     //public float bulletVelocity = 5000;
     public float fireRate = 1f; //Variavel usada para controlar a taxa de ataque do personagem
+    public float fireRateSpecial = 4f; //Variavel usada para controlar a taxa de ataque especial do personagem
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update(){
         fireRate -= Time.deltaTime;
+        fireRateSpecial -= Time.deltaTime;
         CheckIfShooting();
     }
 
@@ -30,26 +32,67 @@ public class PlayerShoot : NetworkBehaviour
     {
         if (!isLocalPlayer)
             return;
-        else
-            if (Input.GetKeyDown(KeyCode.Mouse0) && fireRate <= 0)
-        {
-            CmdShoot();
+        else {
+            if (Input.GetKeyDown(KeyCode.Mouse0) && fireRate <= 0){
+                CmdShoot();
+            }else if (Input.GetKeyDown(KeyCode.Mouse1) && fireRateSpecial <= 0) {
+                CmdSpecialShoot();
+            }
         }
+            
     }
 
     [Command]
-    void CmdShoot()
-    {
+    void CmdSpecialShoot(){
         GetComponent<Animator>().SetBool("isFiring", true);
-        if (GetComponent<SpriteRenderer>().flipX)
-        {
+        if (GetComponent<SpriteRenderer>().flipX){
             bullet = (GameObject)Instantiate(bulletPrefab, rightSpawnPoint.position, Quaternion.identity);
+
+            if (GetComponent<PowerUps>().weaponBuff){
+                int buffDamage = GetComponent<PowerUps>().damageBuff;
+                bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
+            }
+
+            bullet.GetComponent<Rigidbody>().velocity = Vector2.right * 20;
+            fireRateSpecial = 4;
+        }else{
+            bullet = (GameObject)Instantiate(bulletPrefab, leftSpawnPoint.position, Quaternion.identity);
+
+            if (GetComponent<PowerUps>().weaponBuff){
+                int buffDamage = GetComponent<PowerUps>().damageBuff;
+                bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
+            }
+
+            bullet.GetComponent<SpriteRenderer>().flipX = true;
+            bullet.GetComponent<Rigidbody>().velocity = Vector2.left * 20;
+            fireRateSpecial = 4;
+        }
+        NetworkServer.Spawn(bullet);
+        Destroy(bullet, range);
+        StartCoroutine("WaitForEndAnimation");
+    }
+
+    [Command]
+    void CmdShoot(){
+        GetComponent<Animator>().SetBool("isFiring", true);
+        if (GetComponent<SpriteRenderer>().flipX){
+            bullet = (GameObject)Instantiate(bulletPrefab, rightSpawnPoint.position, Quaternion.identity);
+
+            if (GetComponent<PowerUps>().weaponBuff){
+                int buffDamage = GetComponent<PowerUps>().damageBuff;
+                bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
+            }
+
             bullet.GetComponent<Rigidbody>().velocity = Vector2.right * 20;
             fireRate = 1;
-        }
-        else
-        {
+        }else{
             bullet = (GameObject)Instantiate(bulletPrefab, leftSpawnPoint.position, Quaternion.identity);
+
+            if (GetComponent<PowerUps>().weaponBuff){
+                int buffDamage = GetComponent<PowerUps>().damageBuff;
+                bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
+            }
+
             bullet.GetComponent<SpriteRenderer>().flipX = true;
             bullet.GetComponent<Rigidbody>().velocity = Vector2.left * 20;
             fireRate = 1;
