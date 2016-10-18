@@ -7,34 +7,29 @@ public class Fireball : NetworkBehaviour {
     public GameObject fireball;
     public Transform spawn;
     GameObject ball;
+    float timeToSpawn = 5f;
 
 	// Use this for initialization
 	void Start () {
-	
+        InvokeRepeating("WaitWaitPele", timeToSpawn, timeToSpawn);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        StartCoroutine("WaitWaitPele");
-	}
 
     [Command]
     void CmdSpawnFireball()
     {
-        ball = (GameObject)Instantiate(fireball, spawn.position, Quaternion.identity);
-        ball.GetComponent<Rigidbody>().AddForce(new Vector3(0, Random.Range(-1.5f, 1.5f), 0));
+        ball = (GameObject)Instantiate(fireball, new Vector3(Random.Range(-0.1f, 2.5f), Random.Range(-2f, 14f), 0), Quaternion.identity);
+        ball.GetComponent<Rigidbody>().AddForce(Random.Range(-1500f, 1500f), Random.Range(-1010f, 1000f), 0);
         NetworkServer.Spawn(ball);
-        Destroy(ball, .5f);
+        Destroy(ball, 2f);
     }
 
-    IEnumerator WaitWaitPele()
+    void WaitWaitPele()
     {
-        yield return new WaitForSeconds(6);
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 2; i++)
         {
             CmdSpawnFireball();
         }
-        yield return null;
     }
 
 }
