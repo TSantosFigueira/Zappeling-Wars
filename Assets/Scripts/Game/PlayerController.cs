@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Done_Boundary 
 {
-	public float xMin, xMax, zMin, zMax;
+	public float xMin, xMax, yMin, yMax;
 }
 
 public class PlayerController : MonoBehaviour
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<Rigidbody>().position = new Vector3
         (
             Mathf.Clamp(GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax),
-            Mathf.Clamp(GetComponent<Rigidbody>().position.y, boundary.zMin, boundary.zMax),
+            Mathf.Clamp(GetComponent<Rigidbody>().position.y, boundary.yMin, boundary.yMax),
             0.0f); 
 	}
 

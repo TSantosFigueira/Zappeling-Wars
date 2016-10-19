@@ -23,9 +23,9 @@ public class PowerUpManager : NetworkBehaviour{
     private float powerUpCleanTime;
 
     public override void OnStartServer(){
-        Debug.Log("Serve iniciado");
+       // Debug.Log("Serve iniciado");
         InicializeGrid();
-        Debug.Log("Lista Pos: " + gridList.Count);
+       // Debug.Log("Lista Pos: " + gridList.Count);
 
         InvokeRepeating("Cmd_SpawnRandomPower", 10, powerupSpawnTime);
         powerUpCleanTime = powerupSpawnTime - 2f;
@@ -52,10 +52,10 @@ public class PowerUpManager : NetworkBehaviour{
         int randomIndex = Random.Range(0, gridList.Count);
         if (Physics.CheckSphere(gridList[randomIndex], 2)){
             //Verifica se tem um objeto dentro de uma area de 2f;
-            Debug.Log("Chocou em algo");
+          //  Debug.Log("Chocou em algo");
             return RandomPosition();
         }else{
-            Debug.Log("Posição selecionada: " + gridList[randomIndex]);
+           // Debug.Log("Posição selecionada: " + gridList[randomIndex]);
             return gridList[randomIndex];
         }
     }

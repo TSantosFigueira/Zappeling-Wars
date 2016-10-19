@@ -14,14 +14,13 @@ public class Fireball : NetworkBehaviour {
         InvokeRepeating("WaitWaitPele", timeToSpawn, timeToSpawn);
 	}
 	
-
     [Command]
     void CmdSpawnFireball()
     {
-        ball = (GameObject)Instantiate(fireball, new Vector3(Random.Range(-0.1f, 2.5f), Random.Range(-2f, 14f), 0), Quaternion.identity);
+        ball = (GameObject)Instantiate(fireball, new Vector3(Random.Range(-20f, 20f), spawn.transform.position.y, 0), Quaternion.identity);
         ball.GetComponent<Rigidbody>().AddForce(Random.Range(-1500f, 1500f), Random.Range(-1010f, 1000f), 0);
         NetworkServer.Spawn(ball);
-        Destroy(ball, 2f);
+        Destroy(ball, 2.5f);
     }
 
     void WaitWaitPele()

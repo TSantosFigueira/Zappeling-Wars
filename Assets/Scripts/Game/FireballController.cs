@@ -2,19 +2,14 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class Bullet : NetworkBehaviour
-{
+public class FireballController : NetworkBehaviour {
+
     int damage = 25;
-    //private int damageOriginal;
 
-    void Start(){
-      //  damageOriginal = damage;
-    }
-
-    public void DamageBuff(int buff){
-        //Adiciona o buff ao dano
-        damage += buff;
-    }
+    // Use this for initialization
+    void Start () {
+	
+	}
 
     public void OnTriggerEnter(Collider other)
     {
@@ -22,7 +17,7 @@ public class Bullet : NetworkBehaviour
         PlayerHealth health = hit.GetComponent<PlayerHealth>();
 
         if (health != null)
-        {
+        {            
             health.TakeDamage(damage);
         }
 
