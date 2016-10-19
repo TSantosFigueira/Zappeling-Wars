@@ -10,7 +10,7 @@ public class Follow : MonoBehaviour {
     public Vector3 offset;
     Vector3 targetPos;
 
-    void FixedUpdate()
+    void Update()
     {
         if (target)
         {
@@ -19,12 +19,18 @@ public class Follow : MonoBehaviour {
             Vector3 targetDirection = (target.transform.position - posNoZ);
             interpVelocity = targetDirection.magnitude * 5f;
             targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime);
-            transform.position = Vector3.Lerp(transform.position, targetPos + offset, 0.25f);
+            if (targetPos.x < 20)
+            {
+                transform.position = Vector3.Lerp(transform.position, targetPos + offset, 0.20f);
+            }   
+                //transform.position = Vector3.Lerp(transform.position, targetPos, 0.20f);
         }
         else
         {
-            target = GameObject.FindGameObjectWithTag("Player").gameObject;
-            targetPos = GameObject.FindGameObjectWithTag("Player").gameObject.transform.position;
+            if (GameObject.FindGameObjectsWithTag("Player").Length > 0)
+                target = GameObject.FindGameObjectsWithTag("Player")[GameObject.FindGameObjectsWithTag("Player").Length - 1].gameObject;
+            else
+                target = GameObject.FindGameObjectsWithTag("Player")[0].gameObject;
         }
     }
 }

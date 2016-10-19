@@ -17,7 +17,7 @@ public class PlayerSync : NetworkBehaviour {
     public SpriteRenderer sprite;
 
     private Vector2 lastPos;
-    private float threshold = 0.5f;
+    private float threshold = 0f;
 
     void LerpPosition()
     {

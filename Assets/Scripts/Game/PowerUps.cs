@@ -29,7 +29,7 @@ public class PowerUps : MonoBehaviour{
         //Seleciona um efeito aleatorio
         index = Random.Range(0, powerUpTypes.Length);
         //Inicia o efeito de Power Up.
-        Debug.Log("Inicio o power up: " + powerUpTypes[index]);
+       // Debug.Log("Inicio o power up: " + powerUpTypes[index]);
         if (powerUpTypes[index] == "Shield"){
             GetComponent<PlayerHealth>().StartShield();
         }else if (powerUpTypes[index] == "BulletPower"){

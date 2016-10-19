@@ -39,7 +39,7 @@ namespace UnityStandardAssets._2D
 
             if (updateLookAheadTarget)
             {
-                m_LookAheadPos = lookAheadFactor*Vector3.right*Mathf.Sign(xMoveDelta);
+                m_LookAheadPos = lookAheadFactor * Vector3.right * Mathf.Sign(xMoveDelta);
             }
             else
             {
