@@ -23,9 +23,9 @@ public class PowerUpManager : NetworkBehaviour{
     private float powerUpCleanTime;
 
     public override void OnStartServer(){
-       // Debug.Log("Serve iniciado");
+        Debug.Log("Serve iniciado");
         InicializeGrid();
-       // Debug.Log("Lista Pos: " + gridList.Count);
+        Debug.Log("Lista Pos: " + gridList.Count);
 
         InvokeRepeating("Cmd_SpawnRandomPower", 10, powerupSpawnTime);
         powerUpCleanTime = powerupSpawnTime - 2f;

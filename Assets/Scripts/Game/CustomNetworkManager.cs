@@ -7,7 +7,6 @@ using System;
 
 public class CustomNetworkManager : NetworkManager
 {
-    public GameObject player1;
     int _changedScene = 0;
 
     void Update()
@@ -28,8 +27,8 @@ public class CustomNetworkManager : NetworkManager
     {
         if(!NetworkClient.active && !NetworkServer.active)
         {
-            SetPort();
-            NetworkManager.singleton.StartHost();                
+            SetPort();  
+            NetworkManager.singleton.StartHost();           
         }      
     }
 
