@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
-using UnityStandardAssets._2D;
 
 public class SetupLocalPlayer : NetworkBehaviour {
 
@@ -13,7 +12,7 @@ public class SetupLocalPlayer : NetworkBehaviour {
         if (isLocalPlayer)
         {
             GetComponent<PlayerController>().enabled = true;
-            GetComponent<PlayerShoot>().enabled = true;
+            //GetComponent<PlayerShoot>().enabled = true;
             GameObject.Find("Main Camera").SetActive(false);
             PlayerCamera.enabled = true;
         }

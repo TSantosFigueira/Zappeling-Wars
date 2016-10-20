@@ -11,7 +11,7 @@ public class Fireball : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        InvokeRepeating("WaitWaitPele", timeToSpawn, timeToSpawn);
+        InvokeRepeating("ShootFireBall", timeToSpawn, timeToSpawn);
 	}
 	
     [Command]
@@ -23,7 +23,7 @@ public class Fireball : NetworkBehaviour {
         Destroy(ball, 2.5f);
     }
 
-    void WaitWaitPele()
+    void ShootFireBall()
     {
         for (int i = 0; i < 2; i++)
         {

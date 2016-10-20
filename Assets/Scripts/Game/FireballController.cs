@@ -6,11 +6,6 @@ public class FireballController : NetworkBehaviour {
 
     int damage = 25;
 
-    // Use this for initialization
-    void Start () {
-	
-	}
-
     public void OnTriggerEnter(Collider other)
     {
         GameObject hit = other.gameObject;

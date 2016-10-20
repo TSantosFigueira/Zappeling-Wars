@@ -3,33 +3,28 @@ using System.Collections;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-[NetworkSettings (channel = 0, sendInterval = 0.033f)]
 public class PlayerSync : NetworkBehaviour {
 
-    [SyncVar]
-    private Vector2 SyncPos;
-    [SyncVar]
-    private bool playerSprite;
-    [SerializeField]
-    Transform myTransform;
-    [SerializeField]
+    [SyncVar] private Vector3 SyncPos;
+    [SyncVar] private bool playerSprite;
+    [SerializeField] Transform myTransform;
     float lerpRate = 15;
     public SpriteRenderer sprite;
 
-    private Vector2 lastPos;
-    private float threshold = 0.1f;
+    private Vector3 lastPos;
+    //private float threshold = 0.1f;
 
     void LerpPosition()
     {
         if (!isLocalPlayer)
         {
-            myTransform.position = Vector2.Lerp(myTransform.position, SyncPos, Time.deltaTime * lerpRate);
+            myTransform.position = Vector3.Lerp(myTransform.position, SyncPos, Time.deltaTime * lerpRate);
             sprite.flipX = playerSprite;
         }
     }
 
     [Command]
-    void CmdProvidePositionToServer (Vector2 pos, bool actualSprite)
+    void CmdProvidePositionToServer (Vector3 pos, bool actualSprite)
     {
         SyncPos = pos;
         playerSprite = actualSprite; 
@@ -38,7 +33,7 @@ public class PlayerSync : NetworkBehaviour {
     [ClientCallback]
     void TransmitPosition()
     {
-        if(isLocalPlayer && Vector2.Distance(myTransform.position, lastPos) > threshold)
+        if(isLocalPlayer)
         {
             bool isFlipped = sprite.flipX;
             CmdProvidePositionToServer(myTransform.position, isFlipped);
@@ -48,7 +43,8 @@ public class PlayerSync : NetworkBehaviour {
   
     void Update()
     {
-        TransmitPosition();
         LerpPosition();
+        TransmitPosition();       
     }
+
 }

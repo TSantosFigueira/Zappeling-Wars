@@ -29,13 +29,13 @@ public class PowerUps : MonoBehaviour{
         //Seleciona um efeito aleatorio
         index = Random.Range(0, powerUpTypes.Length);
         //Inicia o efeito de Power Up.
-        Debug.Log("Inicio o power up: " + powerUpTypes[index]);
+        //Debug.Log("Inicio o power up: " + powerUpTypes[index]);
         if (powerUpTypes[index] == "Shield"){
             GetComponent<PlayerHealth>().StartShield();
         }else if (powerUpTypes[index] == "BulletPower"){
             weaponBuff = true;
         }else if (powerUpTypes[index] == "SpeedPower"){
-            //GetComponent<PlayerController>().SpeedBuff(10);
+            GetComponent<PlayerController>().SpeedBuff(10);
         }
         isActive = true;
         Invoke("FinishPowerUp", effectTime); //Cancela o efeito depois do tempo limite.
@@ -49,7 +49,7 @@ public class PowerUps : MonoBehaviour{
         }else if (powerUpTypes[index] == "BulletPower"){
             weaponBuff = false;
         }else if (powerUpTypes[index] == "SpeedPower"){
-           // GetComponent<PlayerController>().SpeedNormalize();
+            GetComponent<PlayerController>().SpeedNormalize();
         }
         isActive = false;
     }

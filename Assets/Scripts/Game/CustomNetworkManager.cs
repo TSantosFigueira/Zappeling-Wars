@@ -25,11 +25,11 @@ public class CustomNetworkManager : NetworkManager
 
     public void StartUpHost()
     {
-        if(!NetworkClient.active && !NetworkServer.active)
+        if (!NetworkClient.active && !NetworkServer.active)
         {
-            SetPort();  
-            NetworkManager.singleton.StartHost();           
-        }      
+            SetPort();
+            NetworkManager.singleton.StartHost();
+        }
     }
 
     void SetPort()
@@ -53,15 +53,15 @@ public class CustomNetworkManager : NetworkManager
         NetworkManager.singleton.networkAddress = IpAddress;
     }
 
-    void OnLevelWasLoaded (int level)
+    void OnLevelWasLoaded(int level)
     {
-        _changedScene = level;               
+        _changedScene = level;
     }
 
     void SetupOtherSceneButtons()
     {
-         GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.RemoveAllListeners();
-         GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
+        GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.RemoveAllListeners();
+        GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
     }
 
     void SetupMenuSceneButtons()

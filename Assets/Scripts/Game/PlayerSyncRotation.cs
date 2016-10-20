@@ -4,19 +4,17 @@ using UnityEngine.Networking;
 
 public class PlayerSyncRotation : NetworkBehaviour {
 
-    [SyncVar]
-    private Quaternion SyncPlayerRotation;
-    [SerializeField]
-    private Transform playerTransform;
+    [SyncVar] private Quaternion SyncPlayerRotation;
+    [SerializeField] private Transform playerTransform;
     private float lerpRate = 15;
 
     private Quaternion lastRot;
     private float threshold = 1;
 
-	void FixedUpdate ()
+	void Update ()
     {
-        TransmitRotations();
         LerpRotation();
+        TransmitRotations();
     }
 
     void LerpRotation()
@@ -34,10 +32,10 @@ public class PlayerSyncRotation : NetworkBehaviour {
     [ClientCallback]
     void TransmitRotations()
     {
-        if (isLocalPlayer && Quaternion.Angle(playerTransform.rotation, lastRot) > threshold)
+        if (isLocalPlayer) // && Quaternion.Angle(playerTransform.rotation, lastRot) > threshold)
         {
             CmdProvideRotationsToServer(playerTransform.rotation);
-            lastRot = playerTransform.rotation;
+           // lastRot = playerTransform.rotation;
         }
     }
 }

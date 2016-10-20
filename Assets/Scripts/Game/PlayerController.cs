@@ -12,17 +12,14 @@ public class Done_Boundary
 public class PlayerController : MonoBehaviour
 {
 	public float speed;
-   // private float originalSpeed;
+    private float originalSpeed;
 	public Done_Boundary boundary;
-
-	//public float fireRate;
     private SpriteRenderer sprites;
-	//private float nextFire;
 
     void Start()
     {
         sprites = GetComponent<SpriteRenderer>();
-        //originalSpeed = speed;
+        originalSpeed = speed;
     }
 	
 	void Update ()
@@ -50,12 +47,14 @@ public class PlayerController : MonoBehaviour
             0.0f); 
 	}
 
-    //public void SpeedBuff(float buff){
-    //    speed += buff;
-    //}
+    public void SpeedBuff(float buff)
+    {
+        speed += buff;
+    }
 
-    //public void SpeedNormalize() {
-    //    speed = originalSpeed;
-    //}
+    public void SpeedNormalize()
+    {
+        speed = originalSpeed;
+    }
 
 }
