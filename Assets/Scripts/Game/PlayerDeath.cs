@@ -24,7 +24,7 @@ public class PlayerDeath : NetworkBehaviour {
             renderers[i].enabled = false;
         }
         healthScript.isDead = true;
-
+        GameObject.Find("Main Camera").SetActive(true);
         if (isLocalPlayer)
          {
              GetComponent<CharacterController>().enabled = false;

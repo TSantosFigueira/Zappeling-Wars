@@ -9,6 +9,7 @@ public class PlayerHealth : NetworkBehaviour
     public RectTransform healthBar;
     private bool shouldDie = false;
     public bool isDead = false;
+    public int lives = 1;
 
     private bool isShield = false;
     private int shieldCount;
@@ -22,12 +23,13 @@ public class PlayerHealth : NetworkBehaviour
     void Start()
     {
         currentHealth = health;
+        lives = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckCondition();
+       // CheckCondition();
     }
 
     void CheckCondition()
@@ -92,6 +94,7 @@ public class PlayerHealth : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
+            lives -= 1;
             transform.position = Vector3.zero;
         }
     }

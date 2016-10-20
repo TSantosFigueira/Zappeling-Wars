@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuController : MonoBehaviour {
+public class MainMenuController : NetworkBehaviour {
 
     public string jogoParaCarregar;
     public string menuPrincipal;
@@ -15,6 +16,12 @@ public class MainMenuController : MonoBehaviour {
 
     public void goToMainMenu()
     {
+        SceneManager.LoadScene(menuPrincipal);
+    }
+
+    public void disconnectFromGame()
+    {
+        NetworkManager.singleton.StopHost();
         SceneManager.LoadScene(menuPrincipal);
     }
 }

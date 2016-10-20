@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 
 public class FireballController : NetworkBehaviour {
 
-    int damage = 25;
+    int damage = 100;
 
     public void OnTriggerEnter(Collider other)
     {
