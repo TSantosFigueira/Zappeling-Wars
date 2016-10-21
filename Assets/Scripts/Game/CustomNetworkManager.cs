@@ -8,15 +8,17 @@ using System;
 public class CustomNetworkManager : NetworkManager
 {
     int _changedScene = 0;
+    public int sceneLobby = 3;
+    public int sceneGame = 4;
 
     void Update()
     {
         if (_changedScene == -1) return;
-        else if (_changedScene == 2)
+        else if (_changedScene == sceneLobby)
         {
             SetupMenuSceneButtons();
         }
-        else if (_changedScene == 3)
+        else if (_changedScene == sceneGame)
         {
             SetupOtherSceneButtons();
         }
@@ -71,5 +73,56 @@ public class CustomNetworkManager : NetworkManager
 
         GameObject.Find("JoinGame").GetComponent<Button>().onClick.RemoveAllListeners();
         GameObject.Find("JoinGame").GetComponent<Button>().onClick.AddListener(JoinGame);
+    }
+
+    public int chosenCharacter = 0;
+
+    //subclass for sending network messages
+    public class NetworkMessage : MessageBase
+    {
+        public int chosenClass;
+    }
+
+    public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId, NetworkReader extraMessageReader)
+    {
+        NetworkMessage message = extraMessageReader.ReadMessage<NetworkMessage>();
+        int selectedClass = message.chosenClass;
+        Debug.Log("server add with message " + selectedClass);
+
+        if (selectedClass == 0)
+        {
+            GameObject player = Instantiate(Resources.Load("Characters/FirstPlayer", typeof(GameObject))) as GameObject;
+            NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+        }
+
+        if (selectedClass == 1)
+        {
+            GameObject player = Instantiate(Resources.Load("Characters/SecondPlayer", typeof(GameObject))) as GameObject;
+            NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+        }
+    }
+
+    public override void OnClientConnect(NetworkConnection conn)
+    {
+        NetworkMessage test = new NetworkMessage();
+        test.chosenClass = chosenCharacter;
+
+        ClientScene.AddPlayer(conn, 0, test);
+    }
+
+
+    public override void OnClientSceneChanged(NetworkConnection conn)
+    {
+        //base.OnClientSceneChanged(conn);
+    }
+
+    public void btn1()
+    {
+        chosenCharacter = 0;
+    }
+
+    public void btn2()
+    {
+        chosenCharacter = 1;
     }
 }

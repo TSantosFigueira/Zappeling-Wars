@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class ResutsController : NetworkBehaviour
+public class ResultsController : NetworkBehaviour
 {
 
     int lives;
