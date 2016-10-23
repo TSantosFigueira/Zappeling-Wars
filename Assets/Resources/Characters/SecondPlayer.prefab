@@ -11,21 +11,6 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1000012530808586}
   m_IsPrefabParent: 1
---- !u!1 &1000010390497952
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 4000013887634220}
-  m_Layer: 0
-  m_Name: RightBulletPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1000010524973246
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,21 +29,6 @@ GameObject:
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1000012013962728
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 4000012511655258}
-  m_Layer: 0
-  m_Name: LeftBulletPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -85,6 +55,7 @@ GameObject:
   - 95: {fileID: 95000011345393276}
   - 114: {fileID: 114000012802223772}
   - 114: {fileID: 114000014164548260}
+  - 114: {fileID: 114000014044192114}
   m_Layer: 0
   m_Name: SecondPlayer
   m_TagString: Player
@@ -144,19 +115,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000012511655258
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012013962728}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.21, y: -0.04, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 4000013978458434}
-  m_RootOrder: 1
 --- !u!4 &4000013435320274
 Transform:
   m_ObjectHideFlags: 1
@@ -170,19 +128,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000013978458434}
   m_RootOrder: 0
---- !u!4 &4000013887634220
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010390497952}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.79, y: -0.039999835, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 4000013978458434}
-  m_RootOrder: 3
 --- !u!4 &4000013978458434
 Transform:
   m_ObjectHideFlags: 1
@@ -195,9 +140,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013435320274}
-  - {fileID: 4000012511655258}
   - {fileID: 224000010808366720}
-  - {fileID: 4000013887634220}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!20 &20000011041615678
@@ -329,8 +272,6 @@ MonoBehaviour:
     type: 2}
   specialBulletPrefab: {fileID: 1000014274005592, guid: 0def6746f18494f418bb606a65bcc761,
     type: 2}
-  leftSpawnPoint: {fileID: 4000012511655258}
-  rightSpawnPoint: {fileID: 4000013887634220}
   range: 0.5
   fireRate: 0.5
   fireRateSpecial: 4
@@ -463,6 +404,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerCamera: {fileID: 20000011041615678}
+--- !u!114 &114000014044192114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012530808586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b95ed97d3ad9941a1a312e80348339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victory: {fileID: 21300000, guid: 27a6280d06b67394586d22dbe6c79ddf, type: 3}
+  defeat: {fileID: 21300000, guid: 5d89a37411c427f498bf4ac250dc84ec, type: 3}
 --- !u!114 &114000014112089566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -679,7 +633,7 @@ RectTransform:
   m_Children:
   - {fileID: 224000013027688596}
   m_Father: {fileID: 4000013978458434}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 1.5}

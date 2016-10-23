@@ -115,49 +115,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1000013755671966
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 4000013263607406}
-  m_Layer: 0
-  m_Name: RightBulletPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1000014014944732
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 4000010620852472}
-  m_Layer: 0
-  m_Name: LeftBulletPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4000010620852472
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014014944732}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.21, y: -0.04, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 4000011318857932}
-  m_RootOrder: 1
 --- !u!4 &4000011318857932
 Transform:
   m_ObjectHideFlags: 1
@@ -170,9 +127,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000012821225784}
-  - {fileID: 4000010620852472}
   - {fileID: 224000011853633446}
-  - {fileID: 4000013263607406}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000012821225784
@@ -188,19 +143,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000011318857932}
   m_RootOrder: 0
---- !u!4 &4000013263607406
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013755671966}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.79, y: -0.039999835, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 4000011318857932}
-  m_RootOrder: 3
 --- !u!20 &20000013118656342
 Camera:
   m_ObjectHideFlags: 1
@@ -328,8 +270,6 @@ MonoBehaviour:
     type: 2}
   specialBulletPrefab: {fileID: 1000010380381816, guid: e113e1066fe0eac4e95c8c7310719f81,
     type: 2}
-  leftSpawnPoint: {fileID: 4000010620852472}
-  rightSpawnPoint: {fileID: 4000013263607406}
   range: 0.5
   fireRate: 0.5
   fireRateSpecial: 4
@@ -693,7 +633,7 @@ RectTransform:
   m_Children:
   - {fileID: 224000014021062590}
   m_Father: {fileID: 4000011318857932}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 1.5}

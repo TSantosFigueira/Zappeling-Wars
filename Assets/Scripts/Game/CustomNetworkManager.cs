@@ -8,12 +8,18 @@ using System;
 public class CustomNetworkManager : NetworkManager
 {
     int _changedScene = 0;
+    public int scenePlayerSelection = 1;
     public int sceneLobby = 3;
     public int sceneGame = 4;
+    public int chosenCharacter = 0;
 
     void Update()
     {
         if (_changedScene == -1) return;
+        else if(_changedScene == scenePlayerSelection)
+        {
+            SetupCharacterSelectionScene();
+        }
         else if (_changedScene == sceneLobby)
         {
             SetupMenuSceneButtons();
@@ -75,7 +81,11 @@ public class CustomNetworkManager : NetworkManager
         GameObject.Find("JoinGame").GetComponent<Button>().onClick.AddListener(JoinGame);
     }
 
-    public int chosenCharacter = 0;
+    void SetupCharacterSelectionScene()
+    {
+        GameObject.Find("FirstCharacter").GetComponent<Button>().onClick.AddListener(btn1);
+        GameObject.Find("SecondCharacter").GetComponent<Button>().onClick.AddListener(btn2);
+    }
 
     //subclass for sending network messages
     public class NetworkMessage : MessageBase
