@@ -8,9 +8,9 @@ using System;
 public class CustomNetworkManager : NetworkManager
 {
     int _changedScene = 0;
-    public int scenePlayerSelection = 1;
-    public int sceneLobby = 3;
-    public int sceneGame = 4;
+    int scenePlayerSelection = 2;
+    int sceneLobby = 3;
+    int sceneGame = 4;
     public int chosenCharacter = 0;
 
     void Update()
@@ -97,7 +97,7 @@ public class CustomNetworkManager : NetworkManager
     {
         NetworkMessage message = extraMessageReader.ReadMessage<NetworkMessage>();
         int selectedClass = message.chosenClass;
-        Debug.Log("server add with message " + selectedClass);
+       // Debug.Log("server add with message " + selectedClass);
 
         if (selectedClass == 0)
         {

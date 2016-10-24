@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: 3ea33ff0ee749df4889fac5ad46c9a1a
+timeCreated: 1477336023
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: fireball (449x452) 1_0
+    21300002: fireball (449x452) 1_1
+    21300004: fireball (449x452) 1_2
+    21300006: fireball (449x452) 1_3
+    21300008: fireball (449x452) 1_4
+    21300010: fireball (449x452) 1_5
+    21300012: fireball (449x452) 1_6
+    21300014: fireball (449x452) 1_7
+    21300016: fireball (449x452) 1_8
+    21300018: fireball (449x452) 1_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fireball (449x452) 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 13
+        width: 451
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452) 1_1
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 10
+        width: 452
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452) 1_2
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 13
+        width: 437
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452) 1_3
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 0
+        width: 428
+        height: 452
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452) 1_4
+      rect:
+        serializedVersion: 2
+        x: 1808
+        y: 8
+        width: 425
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452) 1_5
+      rect:
+        serializedVersion: 2
+        x: 2245
+        y: 8
+        width: 424
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452) 1_6
+      rect:
+        serializedVersion: 2
+        x: 2680
+        y: 7
+        width: 445
+        height: 445
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452) 1_7
+      rect:
+        serializedVersion: 2
+        x: 3127
+        y: 10
+        width: 451
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452) 1_8
+      rect:
+        serializedVersion: 2
+        x: 3578
+        y: 13
+        width: 453
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fireball (449x452) 1_9
+      rect:
+        serializedVersion: 2
+        x: 4028
+        y: 10
+        width: 450
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

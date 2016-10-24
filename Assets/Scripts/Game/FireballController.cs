@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
+
 public class FireballController : NetworkBehaviour {
 
     public int damage = 20;
@@ -16,6 +17,14 @@ public class FireballController : NetworkBehaviour {
             health.TakeDamage(damage);
         }
 
+        StartCoroutine("killFireball");
+    }
+
+    IEnumerator killFireball()
+    {
+        GetComponent<Animator>().SetBool("isDestroyed", true);
+        yield return new WaitForSeconds(.5f);
         Destroy(gameObject);
     }
+
 }
