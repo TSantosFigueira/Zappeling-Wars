@@ -16,8 +16,8 @@ public class PlayerShoot : NetworkBehaviour
     private GameObject bullet;
     private Vector3 leftSpawnPosition;
     private Vector3 rightSpawnPosition;
-    public float fireRate = 1f; //Variavel usada para controlar a taxa de ataque do personagem
-    public float fireRateSpecial = 4f; //Variavel usada para controlar a taxa de ataque especial do personagem
+    private float fireRate = 1f; //Variavel usada para controlar a taxa de ataque do personagem
+    private float fireRateSpecial = 4f; //Variavel usada para controlar a taxa de ataque especial do personagem
     private Button btnFire;
     private Button btnSuperFire;
 
@@ -40,31 +40,33 @@ public class PlayerShoot : NetworkBehaviour
     {        
         leftSpawnPosition = gameObject.transform.position - new Vector3(2.24f, 0.04f);
         rightSpawnPosition = gameObject.transform.position + new Vector3(1.79f, -0.04f);
+
         if (isLocalPlayer)
         {
             fireRate -= Time.deltaTime;
             fireRateSpecial -= Time.deltaTime;
         }
+
+#if UNITY_STANDALONE
         CheckIfShooting();
+#endif
     }
 
     void CheckIfShooting()
     {
-        if (!isLocalPlayer)
-            return;
-#if UNITY_STANDALONE
-        else
+       if(isLocalPlayer)
         {
             if ((Input.GetKeyDown(KeyCode.Mouse0)) && (fireRate <= 0))
             {
                 CmdShoot();
+                fireRate = 1;
             }
             else if (Input.GetKeyDown(KeyCode.Mouse1) && fireRateSpecial <= 0)
             {
                 CmdSpecialShoot();
+                fireRateSpecial = 4;
             }
         }
-#endif
     }
 
     public void normalFire()
@@ -72,6 +74,7 @@ public class PlayerShoot : NetworkBehaviour
        if (fireRate <= 0)
         {
             CmdShoot();
+            fireRate = 1;
         }
     } 
 
@@ -80,6 +83,7 @@ public class PlayerShoot : NetworkBehaviour
         if(fireRateSpecial <= 0)
         {
             CmdSpecialShoot();
+            fireRateSpecial = 4;
         }
     }
 
@@ -90,30 +94,21 @@ public class PlayerShoot : NetworkBehaviour
         if (GetComponent<SpriteRenderer>().flipX)
         {
             bullet = (GameObject)Instantiate(specialBulletPrefab, rightSpawnPosition + new Vector3(1, 0, 0), Quaternion.identity);
-
-            if (GetComponent<PowerUps>().weaponBuff)
-            {
-                int buffDamage = GetComponent<PowerUps>().damageBuff;
-                bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
-            }
-
             bullet.GetComponent<Rigidbody>().velocity = Vector2.right * 20;
-            fireRateSpecial = 4;
         }
         else
         {
             bullet = (GameObject)Instantiate(specialBulletPrefab, leftSpawnPosition + new Vector3(-1, 0, 0), Quaternion.Euler(0, 180, 0));
-
-            if (GetComponent<PowerUps>().weaponBuff)
-            {
-                int buffDamage = GetComponent<PowerUps>().damageBuff;
-                bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
-            }
-
             //bullet.GetComponent<SpriteRenderer>().flipX = true;
-            bullet.GetComponent<Rigidbody>().velocity = Vector2.left * 20;
-            fireRateSpecial = 4;
+            bullet.GetComponent<Rigidbody>().velocity = Vector2.left * 20;          
         }
+
+        if (GetComponent<PowerUps>().weaponBuff)
+        {
+            int buffDamage = GetComponent<PowerUps>().damageBuff;
+            bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
+        }
+
         NetworkServer.Spawn(bullet);
         Destroy(bullet, 2f);
         StartCoroutine("WaitForEndAnimation");
@@ -126,32 +121,23 @@ public class PlayerShoot : NetworkBehaviour
         if (GetComponent<SpriteRenderer>().flipX)
         { // Right Shoot
             bullet = (GameObject)Instantiate(bulletPrefab, rightSpawnPosition, Quaternion.identity);
-
-            if (GetComponent<PowerUps>().weaponBuff)
-            {
-                int buffDamage = GetComponent<PowerUps>().damageBuff;
-                bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
-            }
-
-            bullet.GetComponent<Rigidbody>().velocity = Vector2.right * 20;
-            fireRate = 1;
+            bullet.GetComponent<Rigidbody>().velocity = Vector2.right * 20;          
         }
         else
         {  // Left Shoot
             bullet = (GameObject)Instantiate(bulletPrefab, leftSpawnPosition, Quaternion.Euler(0, 180, 0));
-
-            if (GetComponent<PowerUps>().weaponBuff)
-            {
-                int buffDamage = GetComponent<PowerUps>().damageBuff;
-                bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
-            }
-
             // bullet.GetComponent<SpriteRenderer>().flipX = true;
             bullet.GetComponent<Rigidbody>().velocity = Vector2.left * 20;
-            fireRate = 1;
         }
+
+        if (GetComponent<PowerUps>().weaponBuff)
+        {
+            int buffDamage = GetComponent<PowerUps>().damageBuff;
+            bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
+        }
+
         NetworkServer.Spawn(bullet);
-        Destroy(bullet, range);
+        Destroy(bullet, 2f);
         StartCoroutine("WaitForEndAnimation");
     }
 

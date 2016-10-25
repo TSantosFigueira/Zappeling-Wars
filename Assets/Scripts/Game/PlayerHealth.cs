@@ -14,40 +14,13 @@ public class PlayerHealth : NetworkBehaviour
     private bool isShield = false;
     private int shieldCount;
 
-    public delegate void DieDelegate();
-    public event DieDelegate EventDie;
-
     [SyncVar (hook = "OnHealthChanged")] private int currentHealth;
 
     // Use this for initialization
     void Start()
     {
         currentHealth = health;
-        lives = 1;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       // CheckCondition();
-    }
-
-    void CheckCondition()
-    {
-        if (health <= 0 && !shouldDie && !isDead)
-        {
-            shouldDie = true;
-        }
-
-        if (health <= 0 && shouldDie)
-        {
-            if (EventDie != null)
-            {
-                EventDie();
-            }
-
-            shouldDie = false;
-        }
+        lives = 5;
     }
 
     public void StartShield() {
