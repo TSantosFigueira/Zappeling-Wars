@@ -7,9 +7,7 @@ public class PlayerHealth : NetworkBehaviour
 {
     private int health = 100;
     public RectTransform healthBar;
-    private bool shouldDie = false;
-    public bool isDead = false;
-    public int lives = 1;
+    public int lives;
 
     private bool isShield = false;
     private int shieldCount;
@@ -20,7 +18,7 @@ public class PlayerHealth : NetworkBehaviour
     void Start()
     {
         currentHealth = health;
-        lives = 5;
+        lives = 1;
     }
 
     public void StartShield() {
@@ -30,12 +28,6 @@ public class PlayerHealth : NetworkBehaviour
 
     public void FinishShield() {
         isShield = false;
-    }
-
-
-    public void DeductHealth(int damage)
-    {
-        health -= damage;
     }
 
     public void TakeDamage(int amount)

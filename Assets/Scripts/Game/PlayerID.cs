@@ -23,7 +23,7 @@ public class PlayerID : NetworkBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-	    if(myTransform.name == "" || myTransform.name == "FirstPlayer(Clone)")
+	    if(myTransform.name == "" || myTransform.name == "FirstPlayer(Clone)" || myTransform.name == "SecondPlayer(Clone)")
         {
             SetIdentity();
         }

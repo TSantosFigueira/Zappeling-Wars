@@ -272,8 +272,6 @@ MonoBehaviour:
   specialBulletPrefab: {fileID: 1000014274005592, guid: 0def6746f18494f418bb606a65bcc761,
     type: 2}
   range: 0.5
-  fireRate: 0.5
-  fireRateSpecial: 4
 --- !u!114 &114000011041806164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -373,7 +371,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 224000011133190812}
-  isDead: 0
   lives: 1
 --- !u!114 &114000013104022772
 MonoBehaviour:

@@ -20,7 +20,6 @@ public class Bullet : NetworkBehaviour
     {
         GameObject hit = other.gameObject;
         PlayerHealth health = hit.GetComponent<PlayerHealth>();
-
         if (health != null)
         {
             health.TakeDamage(damage);
