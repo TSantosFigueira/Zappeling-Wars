@@ -70,6 +70,9 @@ public class CustomNetworkManager : NetworkManager
     {
         GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.RemoveAllListeners();
         GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
+
+        //GameObject.Find("ResultsPanel").GetComponentInChildren<Button>().onClick.RemoveAllListeners();
+        GameObject.Find("ResultsPanel").GetComponentInChildren<Button>().onClick.AddListener(disconnectFromGame);
     }
 
     void SetupMenuSceneButtons()
@@ -85,6 +88,12 @@ public class CustomNetworkManager : NetworkManager
     {
         GameObject.Find("FirstCharacter").GetComponent<Button>().onClick.AddListener(btn1);
         GameObject.Find("SecondCharacter").GetComponent<Button>().onClick.AddListener(btn2);
+    }
+
+    public void disconnectFromGame()
+    {
+        NetworkManager.singleton.StopHost();
+        SceneManager.LoadScene("01 Menu");
     }
 
     //subclass for sending network messages

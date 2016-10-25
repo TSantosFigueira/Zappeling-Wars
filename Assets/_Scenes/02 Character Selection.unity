@@ -790,9 +790,6 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
-  scenePlayerSelection: 2
-  sceneLobby: 3
-  sceneGame: 4
   chosenCharacter: 0
 --- !u!4 &1055005099
 Transform:

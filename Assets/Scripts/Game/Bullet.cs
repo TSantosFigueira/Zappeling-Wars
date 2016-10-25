@@ -7,11 +7,13 @@ public class Bullet : NetworkBehaviour
     public int damage = 25;
     //private int damageOriginal;
 
-    void Start(){
-      //  damageOriginal = damage;
+    void Start()
+    {
+        //  damageOriginal = damage;
     }
 
-    public void DamageBuff(int buff){
+    public void DamageBuff(int buff)
+    {
         //Adiciona o buff ao dano
         damage += buff;
     }
@@ -20,10 +22,8 @@ public class Bullet : NetworkBehaviour
     {
         GameObject hit = other.gameObject;
         PlayerHealth health = hit.GetComponent<PlayerHealth>();
-        if (health != null)
-        {
-            health.TakeDamage(damage);
-        }
+
+        health.TakeDamage(damage);
 
         Destroy(gameObject);
     }
