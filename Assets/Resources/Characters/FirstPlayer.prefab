@@ -45,7 +45,6 @@ GameObject:
   - 114: {fileID: 114000013489300086}
   - 114: {fileID: 114000010715553686}
   - 114: {fileID: 114000012535376178}
-  - 114: {fileID: 114000013981965438}
   - 54: {fileID: 54000011313581790}
   - 65: {fileID: 65000011687027680}
   - 95: {fileID: 95000013195991462}
@@ -199,7 +198,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010791915272}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.924501, y: 1.9808109, z: 0.2}
@@ -273,7 +272,6 @@ MonoBehaviour:
   range: 0.5
   fireRate: 0.5
   fireRateSpecial: 4
-  btnSuperFire: {fileID: 0}
 --- !u!114 &114000010854060154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -539,17 +537,6 @@ MonoBehaviour:
   lookAheadFactor: 1
   lookAheadReturnSpeed: 0
   lookAheadMoveThreshold: 0
---- !u!114 &114000013981965438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010791915272}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9601ac5234699054c9018f425f6176e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!124 &124000013992199312
 Behaviour:
   m_ObjectHideFlags: 1

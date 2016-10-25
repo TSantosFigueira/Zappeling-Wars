@@ -25,7 +25,6 @@ GameObject:
   - 114: {fileID: 114000011101648168}
   - 114: {fileID: 114000013353497682}
   - 114: {fileID: 114000013794594416}
-  - 114: {fileID: 114000010755891052}
   - 65: {fileID: 65000010714479164}
   m_Layer: 0
   m_Name: Special_Bullet_P2
@@ -91,25 +90,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000010755891052
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014274005592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Animator: {fileID: 95000013620706928}
-  m_ParameterSendBits: 0
-  param0: 
-  param1: 
-  param2: 
-  param3: 
-  param4: 
-  param5: 
 --- !u!114 &114000011101648168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,8 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 3
-  m_SendInterval: 0.5
-  m_SyncRotationAxis: 7
+  m_SendInterval: 0
+  m_SyncRotationAxis: 3
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.001

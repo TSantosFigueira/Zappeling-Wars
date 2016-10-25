@@ -19,7 +19,7 @@ public class PlayerShoot : NetworkBehaviour
     public float fireRate = 1f; //Variavel usada para controlar a taxa de ataque do personagem
     public float fireRateSpecial = 4f; //Variavel usada para controlar a taxa de ataque especial do personagem
     private Button btnFire;
-    public Button btnSuperFire;
+    private Button btnSuperFire;
 
 #if UNITY_ANDROID
     void Start()
@@ -37,7 +37,7 @@ public class PlayerShoot : NetworkBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {        
         leftSpawnPosition = gameObject.transform.position - new Vector3(2.24f, 0.04f);
         rightSpawnPosition = gameObject.transform.position + new Vector3(1.79f, -0.04f);
         if (isLocalPlayer)
@@ -64,7 +64,7 @@ public class PlayerShoot : NetworkBehaviour
                 CmdSpecialShoot();
             }
         }
-#endif       
+#endif
     }
 
     public void normalFire()
