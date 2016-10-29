@@ -106,7 +106,6 @@ public class PlayerShoot : NetworkBehaviour
             bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
         }
 
-        Destroy(bullet, 2);
         NetworkServer.Spawn(bullet);
         StartCoroutine("WaitForEndAnimation");
     }
@@ -122,7 +121,7 @@ public class PlayerShoot : NetworkBehaviour
         }
         else
         {  // Left Shoot new Vector3(2.24f, 0.04f) transform.position - transform.right
-            bullet = Instantiate(bulletPrefab, left.transform.position, Quaternion.Euler(0, 90, 0)) as GameObject; 
+            bullet = Instantiate(bulletPrefab, left.transform.position, Quaternion.Euler(0, 180, 0)) as GameObject; 
             // bullet.GetComponent<SpriteRenderer>().flipX = true;
             bullet.GetComponent<Rigidbody>().velocity = Vector2.left * 20;
         }
@@ -132,7 +131,7 @@ public class PlayerShoot : NetworkBehaviour
             int buffDamage = GetComponent<PowerUps>().damageBuff;
             bullet.GetComponent<Bullet>().DamageBuff(buffDamage);
         }
-        Destroy(bullet, 2);
+
         NetworkServer.Spawn(bullet);
         StartCoroutine("WaitForEndAnimation");
     }
