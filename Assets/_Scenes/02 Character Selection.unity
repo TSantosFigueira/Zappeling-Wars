@@ -748,6 +748,8 @@ MonoBehaviour:
   - {fileID: 1000012530808586, guid: bc6741acccfe3034495b83e7021d33c4, type: 2}
   - {fileID: 1000012012729878, guid: c1a91ebec753fb24a863750c0e670717, type: 2}
   - {fileID: 1000014274005592, guid: 0def6746f18494f418bb606a65bcc761, type: 2}
+  - {fileID: 1000012346907080, guid: 8c9c421d8b5084647bf0b1d9a8bcc67f, type: 2}
+  - {fileID: 1000012821454352, guid: 5c3a21b85d23fb847b5bfc584e471657, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 2
   m_ConnectionConfig:
@@ -1126,7 +1128,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1650746693}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

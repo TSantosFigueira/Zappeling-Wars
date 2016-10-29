@@ -10,9 +10,7 @@ public class PlayerSync : NetworkBehaviour {
     [SerializeField] Transform myTransform;
     float lerpRate = 15;
     public SpriteRenderer sprite;
-
     private Vector3 lastPos;
-    //private float threshold = 0.1f;
 
     void LerpPosition()
     {
@@ -46,5 +44,4 @@ public class PlayerSync : NetworkBehaviour {
         LerpPosition();
         TransmitPosition();       
     }
-
 }

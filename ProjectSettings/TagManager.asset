@@ -10,6 +10,7 @@ TagManager:
   - SoundFxButton
   - Fireball
   - PowerUp
+  - HomeButton
   layers:
   - Default
   - TransparentFX

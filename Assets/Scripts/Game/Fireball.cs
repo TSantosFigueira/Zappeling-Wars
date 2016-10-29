@@ -11,13 +11,14 @@ public class Fireball : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        InvokeRepeating("ShootFireBall", timeToSpawn, timeToSpawn);
+       if(isServer)
+            InvokeRepeating("ShootFireBall", timeToSpawn, timeToSpawn);
 	}
 	
     [Command]
     void CmdSpawnFireball()
     {
-        ball = (GameObject)Instantiate(fireball, new Vector3(Random.Range(-20f, 20f), spawn.transform.position.y, 0), Quaternion.identity);
+        ball = Instantiate(fireball, new Vector3(Random.Range(-20f, 20f), spawn.transform.position.y, 0), Quaternion.identity) as GameObject;
         ball.GetComponent<Rigidbody>().AddForce(Random.Range(-1500f, 1500f), Random.Range(-1010f, 1000f), 0);
         NetworkServer.Spawn(ball);
         Destroy(ball, 2.5f);

@@ -7,16 +7,26 @@ using System;
 
 public class CustomNetworkManager : NetworkManager
 {
-    int _changedScene = 0;
+    int _changedScene = -1;
     int scenePlayerSelection = 2;
     int sceneLobby = 3;
     int sceneGame = 4;
     public int chosenCharacter = 0;
 
+    void Start()
+    {
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+    }
+
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        _changedScene = arg0.buildIndex;
+    }
+
     void Update()
     {
         if (_changedScene == -1) return;
-        else if(_changedScene == scenePlayerSelection)
+        else if (_changedScene == scenePlayerSelection)
         {
             SetupCharacterSelectionScene();
         }
@@ -27,6 +37,8 @@ public class CustomNetworkManager : NetworkManager
         else if (_changedScene == sceneGame)
         {
             SetupOtherSceneButtons();
+            if(NetworkServer.active)
+                SpawnNetworkedItems();
         }
         _changedScene = -1;
     }
@@ -61,18 +73,16 @@ public class CustomNetworkManager : NetworkManager
         NetworkManager.singleton.networkAddress = IpAddress;
     }
 
-    void OnLevelWasLoaded(int level)
-    {
-        _changedScene = level;
-    }
-
     void SetupOtherSceneButtons()
     {
         GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.RemoveAllListeners();
-        GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
+        GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.AddListener(disconnectFromGame);
 
-        //GameObject.Find("ResultsPanel").GetComponentInChildren<Button>().onClick.RemoveAllListeners();
-        GameObject.Find("ResultsPanel").GetComponentInChildren<Button>().onClick.AddListener(disconnectFromGame);
+        if (GameObject.Find("HomeButton"))
+        {
+            GameObject.Find("HomeButton").GetComponent<Button>().onClick.RemoveAllListeners();
+            GameObject.Find("HomeButton").GetComponent<Button>().onClick.AddListener(disconnectFromGame);
+        }
     }
 
     void SetupMenuSceneButtons()
@@ -92,8 +102,19 @@ public class CustomNetworkManager : NetworkManager
 
     public void disconnectFromGame()
     {
+        GameObject.Find("SecondaryCamera").GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
         NetworkManager.singleton.StopHost();
         SceneManager.LoadScene("01 Menu");
+    }
+
+    void SpawnNetworkedItems()
+    {
+        GameObject FireballSpawner = Instantiate(Resources.Load("Game/FireballSpawner", typeof(GameObject))) as GameObject;
+        GameObject PowerUpManager = Instantiate(Resources.Load("Game/PowerUpManager", typeof(GameObject))) as GameObject;
+        
+        NetworkServer.Spawn(FireballSpawner);
+        NetworkServer.Spawn(PowerUpManager);
+        NetworkServer.SpawnObjects();
     }
 
     //subclass for sending network messages
@@ -106,7 +127,7 @@ public class CustomNetworkManager : NetworkManager
     {
         NetworkMessage message = extraMessageReader.ReadMessage<NetworkMessage>();
         int selectedClass = message.chosenClass;
-       // Debug.Log("server add with message " + selectedClass);
+        // Debug.Log("server add with message " + selectedClass);
 
         if (selectedClass == 0)
         {

@@ -101,8 +101,8 @@ GameObject:
   - 114: {fileID: 116181577}
   - 222: {fileID: 116181579}
   - 114: {fileID: 116181578}
-  - 114: {fileID: 116181580}
   - 114: {fileID: 116181581}
+  - 114: {fileID: 116181580}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -168,7 +168,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 116181580}
-        m_MethodName: goToMainMenu
+        m_MethodName: goToScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -221,11 +221,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 116181575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688bd6a881c17ac459ed1b379fd18e7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dacaff39ac3a084abf52edb9e618817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jogoParaCarregar: 
-  menuPrincipal: 01 Menu
+  cenaParaCarregar: 02 Character Selection
+  menuPrincipal: 
 --- !u!114 &116181581
 MonoBehaviour:
   m_ObjectHideFlags: 0
