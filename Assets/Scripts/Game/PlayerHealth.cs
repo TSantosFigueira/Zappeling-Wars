@@ -12,7 +12,7 @@ public class PlayerHealth : NetworkBehaviour
     private bool isShield = false;
     private int shieldCount;
 
-    [SyncVar (hook = "OnHealthChanged")] private int currentHealth;
+    [SyncVar (hook = "OnHealthChanged")] int currentHealth;
 
     // Use this for initialization
     void Start()

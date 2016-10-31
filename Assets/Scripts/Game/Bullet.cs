@@ -9,7 +9,11 @@ public class Bullet : NetworkBehaviour
 
     void Start()
     {
-        Destroy(gameObject, 2);
+        if (GetComponent<NetworkIdentity>().isServer)
+        {
+            Destroy(gameObject, 2);
+        }
+        //Destroy(gameObject, 2);
     }
 
     public void DamageBuff(int buff)
@@ -20,11 +24,10 @@ public class Bullet : NetworkBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (!NetworkServer.active)
-        {
-            return;
-        }
+        //if (!NetworkServer.active)
+        //    return;
 
+        Debug.Log("hit");
         GameObject hit = other.gameObject;
         PlayerHealth health = hit.GetComponent<PlayerHealth>();
 

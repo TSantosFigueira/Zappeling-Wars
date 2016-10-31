@@ -8,9 +8,9 @@ using System;
 public class CustomNetworkManager : NetworkManager
 {
     int _changedScene = -1;
-    int scenePlayerSelection = 2;
-    int sceneLobby = 3;
-    int sceneGame = 4;
+    int scenePlayerSelection = 1;
+    int sceneLobby = 2;
+    int sceneGame = 3;
     public int chosenCharacter = 0;
 
     void Start()
@@ -45,11 +45,12 @@ public class CustomNetworkManager : NetworkManager
 
     public void StartUpHost()
     {
-        if (!NetworkClient.active && !NetworkServer.active)
-        {
-            SetPort();
-            NetworkManager.singleton.StartHost();
-        }
+        if (NetworkClient.active || NetworkServer.active)
+            return;
+
+        SetPort();
+        NetworkManager.singleton.StartHost();
+
     }
 
     void SetPort()
@@ -59,12 +60,12 @@ public class CustomNetworkManager : NetworkManager
 
     public void JoinGame()
     {
-        if (!NetworkClient.active && !NetworkServer.active)
-        {
-            SetIPAddress();
-            SetPort();
-            NetworkManager.singleton.StartClient();
-        }
+        if (NetworkClient.active || NetworkServer.active)
+            return;
+
+        SetIPAddress();
+        SetPort();
+        NetworkManager.singleton.StartClient();
     }
 
     void SetIPAddress()

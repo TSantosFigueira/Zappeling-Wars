@@ -53,12 +53,12 @@ public class PlayerShoot : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            if ((Input.GetKeyDown(KeyCode.Mouse0)) && (fireRate <= 0))
+            if (((Input.GetKeyDown(KeyCode.Mouse0)) && (fireRate <= 0)))
             {
                 CmdShoot();
                 fireRate = 1;
             }
-            else if (Input.GetKeyDown(KeyCode.Mouse1) && fireRateSpecial <= 0)
+            else if ((Input.GetKeyDown(KeyCode.Mouse1) && fireRateSpecial <= 0))
             {
                 CmdSpecialShoot();
                 fireRateSpecial = 4;
@@ -90,12 +90,12 @@ public class PlayerShoot : NetworkBehaviour
         GetComponent<Animator>().SetBool("isFiring", true);
         if (GetComponent<SpriteRenderer>().flipX)
         { //rightSpawnPosition + new Vector3(1, 0, 0)
-            bullet = Instantiate(specialBulletPrefab, transform.position + transform.right, Quaternion.identity) as GameObject;
+            bullet = Instantiate(specialBulletPrefab, right.transform.position, Quaternion.identity) as GameObject;
             bullet.GetComponent<Rigidbody>().velocity = transform.right * 20;
         }
         else
         { //leftSpawnPosition + new Vector3(-1, 0, 0)
-            bullet = Instantiate(specialBulletPrefab, transform.position - transform.right, Quaternion.Euler(0, 180, 0)) as GameObject;
+            bullet = Instantiate(specialBulletPrefab, left.transform.position, Quaternion.Euler(0, 180, 0)) as GameObject;
             //bullet.GetComponent<SpriteRenderer>().flipX = true;
             bullet.GetComponent<Rigidbody>().velocity = Vector2.left * 20;
         }
@@ -115,12 +115,12 @@ public class PlayerShoot : NetworkBehaviour
     {
         GetComponent<Animator>().SetBool("isFiring", true);
         if (GetComponent<SpriteRenderer>().flipX)
-        { // Right Shoot (1.79f, -0.04f) transform.position + transform.right
+        { // Right Shoot (1.79f, -0.04f) transform.position + transform.right  right.transform.position
             bullet = Instantiate(bulletPrefab, right.transform.position, Quaternion.identity) as GameObject;
             bullet.GetComponent<Rigidbody>().velocity = transform.right * 20;
         }
         else
-        {  // Left Shoot new Vector3(2.24f, 0.04f) transform.position - transform.right
+        {  // Left Shoot new Vector3(2.24f, 0.04f) transform.position - transform.right left.transform.position
             bullet = Instantiate(bulletPrefab, left.transform.position, Quaternion.Euler(0, 180, 0)) as GameObject; 
             // bullet.GetComponent<SpriteRenderer>().flipX = true;
             bullet.GetComponent<Rigidbody>().velocity = Vector2.left * 20;
