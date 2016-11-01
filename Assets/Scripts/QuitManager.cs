@@ -37,7 +37,7 @@ public class QuitManager : MonoBehaviour {
     }
 
     // Na confirmação de saída, o botão "Sim" foi pressionado
-    public void yesPressed()
+    public void GameQuit()
     {
         Application.Quit();
     }

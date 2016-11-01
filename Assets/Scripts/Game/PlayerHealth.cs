@@ -12,7 +12,8 @@ public class PlayerHealth : NetworkBehaviour
     private bool isShield = false;
     private int shieldCount;
 
-    [SyncVar (hook = "OnHealthChanged")] int currentHealth;
+    [SyncVar(hook = "OnHealthChanged")]
+    int currentHealth;
 
     // Use this for initialization
     void Start()
@@ -21,20 +22,27 @@ public class PlayerHealth : NetworkBehaviour
         lives = 1;
     }
 
-    public void StartShield() {
+    public void StartShield()
+    {
         isShield = true;
         shieldCount = 3;
     }
 
-    public void FinishShield() {
+    public void FinishShield()
+    {
         isShield = false;
     }
 
     public void TakeDamage(int amount)
     {
+
+        GetComponent<Animator>().SetBool("isHit", true);
+        StartCoroutine("setFalse");
+
         if (!isServer) return;
 
-        if (isShield){
+        if (isShield)
+        {
             shieldCount -= 1;
             if (shieldCount <= 0)
                 isShield = false;
@@ -42,6 +50,7 @@ public class PlayerHealth : NetworkBehaviour
         }
 
         currentHealth -= amount;
+
         if (currentHealth <= 0)
         {
             currentHealth = health;
@@ -49,9 +58,15 @@ public class PlayerHealth : NetworkBehaviour
         }
     }
 
-    void OnHealthChanged (int health)
+    IEnumerator setFalse()
     {
-       healthBar.sizeDelta = new Vector2(health * 2, healthBar.sizeDelta.y);
+        yield return new WaitForSeconds(.1f);
+        GetComponent<Animator>().SetBool("isHit", false);
+    }
+
+    void OnHealthChanged(int health)
+    {
+        healthBar.sizeDelta = new Vector2(health * 2, healthBar.sizeDelta.y);
     }
 
     [ClientRpc]
