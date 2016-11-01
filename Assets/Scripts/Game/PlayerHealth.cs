@@ -35,9 +35,12 @@ public class PlayerHealth : NetworkBehaviour
 
     public void TakeDamage(int amount)
     {
-
-        GetComponent<Animator>().SetBool("isHit", true);
-        StartCoroutine("setFalse");
+        if(isClient || isServer)
+        {
+            GetComponent<Animator>().SetBool("isHit", true);
+            StartCoroutine("setFalse");
+        }
+        
 
         if (!isServer) return;
 
