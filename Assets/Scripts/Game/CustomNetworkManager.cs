@@ -8,9 +8,9 @@ using System;
 public class CustomNetworkManager : NetworkManager
 {
     int _changedScene = -1;
-    int scenePlayerSelection = 1;
-    int sceneLobby = 2;
-    int sceneGame = 3;
+    int scenePlayerSelection = 2;
+    int sceneLobby = 3;
+    int sceneGame = 4;
     public int chosenCharacter = 0;
 
     void Start()
